@@ -22,7 +22,7 @@ export default function Cart() {
                             <div key={item.id} className="flex items-center border p-4 rounded-md shadow-sm mb-4">
                                 <img src={item.image} alt={item.name} className="w-40 h-40 mr-8" />
                                 <div className="flex-1">
-                                    <div className="flex justify-between items-start">
+                                    <div className="flex justify-between items-center">
                                         <div className="text-left">
                                             <h2 className="text-lg font-semibold">{item.name}</h2>
                                             <p>Price: ${parseFloat(item.price).toFixed(2)}</p>
