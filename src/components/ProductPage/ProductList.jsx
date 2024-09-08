@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ProductService from '../services/ApiService';
+import ProductService from '../../services/ApiService';
 import ProductCard from './ProductCard';
+import { useCart } from '../Context/CartContext';
+import { toast } from 'react-toastify';
 
 export default function ProductList() {
+    const { handleAddToCart } = useCart();
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -18,19 +21,21 @@ export default function ProductList() {
         fetchProducts();
     }, []);
 
+    const addToCart = (product) => {
+        handleAddToCart(product);
+        toast.success('Product added to cart!');
+    };
+
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-6">Products</h1>
-            <div className="
-                grid 
-                grid-cols-1 
-                sm:grid-cols-2 
-                md:grid-cols-3 
-                lg:grid-cols-4 
-                xl:grid-cols-6 
-                gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
                 {products.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        onAddToCart={addToCart}
+                    />
                 ))}
             </div>
         </div>

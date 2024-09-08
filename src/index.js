@@ -6,9 +6,10 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // Future note: React Strict Mode renders functions causing double add/subtract on add to cart
+  // <React.StrictMode> 
     <App />
-  </React.StrictMode>
+  // </React.StrictMode> 
 );
 
 // If you want to start measuring performance in your app, pass a function
