@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Header from './components/PageLayout/Header';
 import ProductList from './components/ProductPage/ProductList';
 import ProductDetails from './components/ProductPage/ProductDetails';
@@ -25,18 +25,22 @@ export default function App() {
                 </Route>
 
                 {/* Admin Routes */}
-                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
+                    (<Navigate to="/admin/login" />)}/>
+                <Route path="/admin/login" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
+                    (<AdminLogin />)}/>
+                {/* Protected route */}
                 <Route path="/admin/dashboard" element={<PrivateRoute component={AdminDashboard} />} />
             </Routes>
         </Router>
     );
 }
 
-const CartProviderWrapper = ({ children }) => {
+const CartProviderWrapper = () => {
     return (
         <CartProvider>
             <Header />
-            {children}
+            <Outlet />
             <Footer />
             <ToastContainer autoClose={1250} />
         </CartProvider>
