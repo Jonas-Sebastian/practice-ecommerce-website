@@ -12,35 +12,34 @@ const theme = createTheme({
   },
 });
 
-export default function AdminLogin() {
+export default function AdminRegister() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     // Placeholder Code
-    if (username === 'admin' && password === 'admin') {
-      localStorage.setItem('adminToken', 'yourTokenHere'); // Save auth token
-      navigate('/admin/dashboard');
-    } else {
-      setError('Invalid credentials');
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
     }
-  };
 
-  const handleNavigateToRegister = () => {
-    navigate('/admin/register'); // Navigate to the register page
+    // Simulate successful registration
+    localStorage.setItem('adminToken', 'yourTokenHere');
+    navigate('/admin/dashboard');
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xs" sx={{ mt: 8 }}>
         <Typography variant="h4" align="center" gutterBottom>
-          Admin Login
+          Admin Register
         </Typography>
-        <Box component="form" onSubmit={handleLogin} sx={{ mt: 3 }}>
+        <Box component="form" onSubmit={handleRegister} sx={{ mt: 3 }}>
           <TextField
             label="Username"
             variant="outlined"
@@ -58,6 +57,15 @@ export default function AdminLogin() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <TextField
+            label="Confirm Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
           {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
           <Button
             type="submit"
@@ -65,15 +73,6 @@ export default function AdminLogin() {
             color="primary"
             fullWidth
             sx={{ mt: 2 }}
-          >
-            Login
-          </Button>
-          <Button
-            variant="outlined"
-            color="secondary"
-            fullWidth
-            sx={{ mt: 2 }}
-            onClick={handleNavigateToRegister}
           >
             Register
           </Button>

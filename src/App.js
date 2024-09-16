@@ -10,6 +10,7 @@ import { CartProvider } from './components/Context/CartContext';
 import { ToastContainer } from 'react-toastify';
 import AdminLogin from './components/AdminPage/AdminLogin';
 import AdminDashboard from './components/AdminPage/AdminDashboard';
+import AdminRegister from './components/AdminPage/AdminRegister';
 import PrivateRoute from './components/AdminPage/PrivateRoute';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,6 +30,8 @@ export default function App() {
                     (<Navigate to="/admin/login" />)}/>
                 <Route path="/admin/login" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
                     (<AdminLogin />)}/>
+                <Route path="/admin/register" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
+                    (<AdminRegister />)}/>
                 {/* Protected route */}
                 <Route path="/admin/dashboard" element={<PrivateRoute component={AdminDashboard} />} />
             </Routes>
