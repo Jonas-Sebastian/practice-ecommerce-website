@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_URL_PRODUCTS = 'http://127.0.0.1:8000/api/products/';
-const API_URL_CATEGORIES = 'http://127.0.0.1:8000/api/categories/';
+const API_URL_PRODUCTS = 'http://127.0.0.1:8000/api/practice-shop/products/';
+const API_URL_CATEGORIES = 'http://127.0.0.1:8000/api/practice-shop/categories/';
 
 class ProductService {
   // Products
