@@ -2,8 +2,10 @@ import axios from 'axios';
 
 const API_URL_PRODUCTS = 'http://127.0.0.1:8000/api/practice-shop/products/';
 const API_URL_CATEGORIES = 'http://127.0.0.1:8000/api/practice-shop/categories/';
+const API_URL_REGISTER = 'http://127.0.0.1:8000/api/shop-admin/register/';
+const API_URL_LOGIN = 'http://127.0.0.1:8000/api/shop-admin/login/';
 
-class ProductService {
+class ApiService {
   // Products
   getAllProducts() {
     return axios.get(API_URL_PRODUCTS);
@@ -45,8 +47,18 @@ class ProductService {
   deleteCategory(id) {
     return axios.delete(`${API_URL_CATEGORIES}${id}/`);
   }
+
+  // User Registration
+  registerUser(data) {
+    return axios.post(API_URL_REGISTER, data);
+  }
+
+  // User Login
+  loginUser(data) {
+    return axios.post(API_URL_LOGIN, data);
+  }
 }
 
-const productServiceInstance = new ProductService();
+const apiServiceInstance = new ApiService();
 
-export default productServiceInstance;
+export default apiServiceInstance;

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import apiServiceInstance from '../../services/ApiService'; // Update the import path accordingly
 
 // Define MUI theme
 const theme = createTheme({
@@ -14,23 +15,35 @@ const theme = createTheme({
 
 export default function AdminRegister() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState(''); // Added state for email
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(''); // Added state for success message
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Placeholder Code
+    // Validate password confirmation
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
 
-    // Simulate successful registration
-    localStorage.setItem('adminToken', 'yourTokenHere');
-    navigate('/admin/dashboard');
+    try {
+      // Make API call for registration
+      await apiServiceInstance.registerUser({
+        username: username,
+        email: email, // Include email in registration data
+        password: password
+      });
+      setSuccess('Registration successful!');
+      localStorage.setItem('adminToken', 'yourTokenHere'); // Token handling should be managed based on your actual backend response
+      navigate('/admin/dashboard');
+    } catch (err) {
+      setError('Registration failed. Please try again.');
+    }
   };
 
   return (
@@ -47,6 +60,14 @@ export default function AdminRegister() {
             margin="normal"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             label="Password"
@@ -67,6 +88,7 @@ export default function AdminRegister() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
+          {success && <Alert severity="success" sx={{ mt: 2 }}>{success}</Alert>} {/* Added success message */}
           <Button
             type="submit"
             variant="contained"
