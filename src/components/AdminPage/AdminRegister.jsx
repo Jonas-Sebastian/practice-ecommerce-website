@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import apiServiceInstance from '../../services/ApiService'; // Update the import path accordingly
+import apiServiceInstance from '../../services/ApiService';
 
-// Define MUI theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -15,11 +14,11 @@ const theme = createTheme({
 
 export default function AdminRegister() {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState(''); // Added state for email
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(''); // Added state for success message
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -35,12 +34,11 @@ export default function AdminRegister() {
       // Make API call for registration
       await apiServiceInstance.registerUser({
         username: username,
-        email: email, // Include email in registration data
+        email: email,
         password: password
       });
       setSuccess('Registration successful!');
-      localStorage.setItem('adminToken', 'yourTokenHere'); // Token handling should be managed based on your actual backend response
-      navigate('/admin/dashboard');
+      navigate('/admin/login');
     } catch (err) {
       setError('Registration failed. Please try again.');
     }
@@ -88,7 +86,7 @@ export default function AdminRegister() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
-          {success && <Alert severity="success" sx={{ mt: 2 }}>{success}</Alert>} {/* Added success message */}
+          {success && <Alert severity="success" sx={{ mt: 2 }}>{success}</Alert>}
           <Button
             type="submit"
             variant="contained"

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import apiServiceInstance from '../../services/ApiService';
 
-// Define MUI theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -13,25 +13,38 @@ const theme = createTheme({
 });
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState('');
+  const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Function to check if the input is an email address
+  const isEmail = (str) => {
+    // Simple regex for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(str);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Placeholder Code
-    if (username === 'admin' && password === 'admin') {
-      localStorage.setItem('adminToken', 'yourTokenHere'); // Save auth token
-      navigate('/admin/dashboard');
-    } else {
-      setError('Invalid credentials');
+    try {
+      const response = await apiServiceInstance.loginUser({
+        // Use email if input looks like an email address, otherwise use username
+        email: isEmail(usernameOrEmail) ? usernameOrEmail : undefined,
+        username: !isEmail(usernameOrEmail) ? usernameOrEmail : undefined,
+        password: password
+      });
+      
+      localStorage.setItem('adminToken', response.data.token);
+      navigate('/admin/dashboard'); // Redirect to the dashboard upon successful login
+    } catch (err) {
+      setError('Invalid credentials or login failed');
     }
   };
 
   const handleNavigateToRegister = () => {
-    navigate('/admin/register'); // Navigate to the register page
+    navigate('/admin/register');
   };
 
   return (
@@ -42,12 +55,12 @@ export default function AdminLogin() {
         </Typography>
         <Box component="form" onSubmit={handleLogin} sx={{ mt: 3 }}>
           <TextField
-            label="Username"
+            label="Username or Email"
             variant="outlined"
             fullWidth
             margin="normal"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={usernameOrEmail}
+            onChange={(e) => setUsernameOrEmail(e.target.value)}
           />
           <TextField
             label="Password"
