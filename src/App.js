@@ -14,6 +14,8 @@ import AdminRegister from './components/AdminPage/AdminRegister';
 import PrivateRoute from './components/AdminPage/PrivateRoute';
 import Contact from './components/ShopInfo/ContactPage';
 import About from './components/ShopInfo/AboutPage';
+import HomePage from './components/HomePage/HomePage';
+import BackToTopButton from './components/PageLayout/BackToTop';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
@@ -22,7 +24,7 @@ export default function App() {
             <Routes>
                 {/* Shop Routes */}
                 <Route element={<CartProviderWrapper />}>
-                    <Route path="/" element={<ProductList />} />
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/products/:id" element={<ProductDetails />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/shop" element={<ProductList />} />
@@ -51,6 +53,7 @@ const CartProviderWrapper = () => {
             <Outlet />
             <Footer />
             <ToastContainer autoClose={1250} />
+            <BackToTopButton />
         </CartProvider>
     );
 };
