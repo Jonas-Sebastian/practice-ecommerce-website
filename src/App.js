@@ -12,6 +12,8 @@ import AdminLogin from './components/AdminPage/AdminLogin';
 import AdminDashboard from './components/AdminPage/AdminDashboard';
 import AdminRegister from './components/AdminPage/AdminRegister';
 import PrivateRoute from './components/AdminPage/PrivateRoute';
+import Contact from './components/ShopInfo/ContactPage';
+import About from './components/ShopInfo/AboutPage';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
@@ -23,6 +25,9 @@ export default function App() {
                     <Route path="/" element={<ProductList />} />
                     <Route path="/products/:id" element={<ProductDetails />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/shop" element={<ProductList />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/about" element={<About />} />
                 </Route>
 
                 {/* Admin Routes */}
