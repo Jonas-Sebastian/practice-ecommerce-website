@@ -1,19 +1,35 @@
 import React from 'react';
+import { AppBar, Toolbar, Typography, Button, IconButton, Container } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { NavLink, Link } from 'react-router-dom';
+import './Header.css';
 
 export default function Header() {
     return (
-        <header className="bg-gray-800 text-white p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-bold">MyShop</h1>
-                <nav>
-                    <ul className="flex space-x-4">
-                        <li><a href="/" className="hover:text-gray-400">Home</a></li>
-                        <li><a href="/shop" className="hover:text-gray-400">Shop</a></li>
-                        <li><a href="/cart" className="hover:text-gray-400">Cart</a></li>
-                        <li><a href="/contact" className="hover:text-gray-400">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <AppBar position="static" color="primary">
+            <Container maxWidth="xl">
+                <Toolbar className="toolbar">
+                    <Typography variant="h5" className="shop-title" style={{ flexGrow: 1, fontFamily: 'Montserrat' }}>
+                        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            MyShop
+                        </Link>
+                    </Typography>
+                    <NavLink to="/shop" className="nav-link">
+                        <Button className="nav-button" color="inherit">Shop</Button>
+                    </NavLink>
+                    <NavLink to="/contact" className="nav-link">
+                        <Button className="nav-button" color="inherit">Contact</Button>
+                    </NavLink>
+                    <NavLink to="/about" className="nav-link">
+                        <Button className="nav-button" color="inherit">About</Button>
+                    </NavLink>
+                    <Link to="/cart">
+                        <IconButton edge="end" color="inherit">
+                            <ShoppingCartIcon />
+                        </IconButton>
+                    </Link>
+                </Toolbar>
+            </Container>
+        </AppBar>
     );
-};
+}

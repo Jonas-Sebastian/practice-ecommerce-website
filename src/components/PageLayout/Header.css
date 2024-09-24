@@ -1,0 +1,103 @@
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    left: 0;
+    background-color: #FFFFFF; /* Underline color */
+    transition: width 0.3s ease-in;
+}
+
+/* XS (Extra Small) breakpoint : For the smallest phone screens */
+@media (min-height: 0px) {
+    .nav-link::after {
+        height: 0.4vh;
+        bottom: 0.3vh;
+    }
+    .nav-link Button {
+        min-width: 100px;
+        height: 7vh;
+    }
+    .toolbar {
+        height: 7vh;
+    }
+}
+
+/* SM (Small) breakpoint : For phones*/
+@media (min-width: 360px) and (min-height: 800px) {
+    .nav-link::after {
+        height: 0.5vh;
+        bottom: 0.5vh;
+    }
+    .nav-link Button {
+        width: 20vw; 
+        height: 6vh;
+    }
+    .toolbar {
+        height: 6vh;
+    }
+}
+
+/* MD (Medium) breakpoint : For Tablets*/
+@media (min-width: 768px) and (min-height: 1024px) {
+    .nav-link::after {
+        height: 0.4vh;
+        bottom: 0.5vh;
+    }
+    .nav-link Button {
+        width: 20vw; 
+        height: 5vh;
+    }
+    .toolbar {
+        height: 5vh;
+    }
+}
+
+/* LG (Large) breakpoint : For 1366x768 or 1280x720 monitors */
+@media (min-width: 1280px) and (min-height: 720px) {
+    .nav-link::after {
+        height: 0.5vh;
+        bottom: 0.75vh;
+    }
+    .nav-link Button {
+        width: 2.5vw; 
+        height: 8vh;
+    }
+    .toolbar {
+        height: 8vh;
+    }
+}
+
+/* XL (Extra Large) breakpoint : For 1920x1080p and above */
+@media (min-width: 1920px) and (min-height: 1080px) {
+    .nav-link::after {
+        height: 0.25vh;
+        bottom: 0.5vh;
+    }
+    .nav-link Button {
+        width: 2.5vw;
+        height: 5vh;
+    }
+    .toolbar {
+        height: 5vh;
+    }
+}
+
+/* Active state */
+.nav-link.active::after {
+    width: 100%; /* Expand the underline when active */
+}
+
+.nav-link Button {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; 
+    min-width: 100px;
+    border-radius: 0;
+}
