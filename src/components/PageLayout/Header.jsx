@@ -6,9 +6,9 @@ import './Header.css';
 
 export default function Header() {
     return (
-        <AppBar position="static" color="primary">
+        <AppBar position="sticky" color="primary">
             <Container maxWidth="xl">
-                <Toolbar className="toolbar">
+                <Toolbar className="toolbar" >
                     <Typography variant="h5" className="shop-title" style={{ flexGrow: 1, fontFamily: 'Montserrat' }}>
                         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                             MyShop
