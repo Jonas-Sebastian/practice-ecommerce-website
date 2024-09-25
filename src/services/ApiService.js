@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL_PRODUCTS = 'http://127.0.0.1:8000/api/practice-shop/products/';
-const API_URL_CATEGORIES = 'http://127.0.0.1:8000/api/practice-shop/categories/';
-const API_URL_REGISTER = 'http://127.0.0.1:8000/api/shop-admin/register/';
-const API_URL_LOGIN = 'http://127.0.0.1:8000/api/shop-admin/login/';
-const API_URL_HERO_IMAGES = 'http://127.0.0.1:8000/api/shop-images/hero-images/';
+const API_URL_PRODUCTS = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/practice-shop/products/';
+const API_URL_CATEGORIES = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/practice-shop/categories/';
+const API_URL_REGISTER = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/shop-admin/register/';
+const API_URL_LOGIN = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/shop-admin/login/';
+const API_URL_HERO_IMAGES = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/shop-images/hero-images/';
 
 class ApiService {
   // Products
@@ -71,7 +71,7 @@ class ApiService {
   uploadHeroImage(data) {
     return axios.post(API_URL_HERO_IMAGES, data, {
       headers: {
-        'Content-Type': 'multipart/form-data' // Required for file uploads
+        'Content-Type': 'multipart/form-data'
       }
     });
   }
@@ -79,7 +79,7 @@ class ApiService {
   updateHeroImage(id, data) {
     return axios.put(`${API_URL_HERO_IMAGES}${id}/`, data, {
       headers: {
-        'Content-Type': 'multipart/form-data' // Required for file uploads
+        'Content-Type': 'multipart/form-data'
       }
     });
   }
@@ -88,7 +88,6 @@ class ApiService {
     return axios.delete(`${API_URL_HERO_IMAGES}${id}/`);
   }
 }
-
 
 const apiServiceInstance = new ApiService();
 
