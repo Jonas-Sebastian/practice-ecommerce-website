@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-const API_URL_PRODUCTS = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/practice-shop/products/';
-const API_URL_CATEGORIES = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/practice-shop/categories/';
-const API_URL_REGISTER = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/shop-admin/register/';
-const API_URL_LOGIN = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/shop-admin/login/';
-const API_URL_HERO_IMAGES = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api/shop-images/hero-images/';
+const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api';
+
+const API_URL_PRODUCTS = `${BASE_URL}/practice-shop/products/`;
+const API_URL_CATEGORIES = `${BASE_URL}/practice-shop/categories/`;
+const API_URL_REGISTER = `${BASE_URL}/shop-admin/register/`;
+const API_URL_LOGIN = `${BASE_URL}/shop-admin/login/`;
+const API_URL_HERO_IMAGES = `${BASE_URL}/shop-images/hero-images/`;
 
 class ApiService {
   // Products
