@@ -24,6 +24,8 @@
     }
     .toolbar {
         height: 7vh;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping */
     }
 }
 
@@ -39,6 +41,8 @@
     }
     .toolbar {
         height: 6vh;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping */
     }
 }
 
@@ -54,6 +58,8 @@
     }
     .toolbar {
         height: 5vh;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping */
     }
 }
 
@@ -100,4 +106,9 @@
     font-family: 'Montserrat', sans-serif; 
     min-width: 100px;
     border-radius: 0;
+}
+
+.nav-links {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-grow: 1; /* Allow to take available space */
 }

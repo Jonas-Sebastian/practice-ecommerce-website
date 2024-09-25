@@ -8,21 +8,23 @@ export default function Header() {
     return (
         <AppBar position="sticky" color="primary">
             <Container maxWidth="xl">
-                <Toolbar className="toolbar" >
+                <Toolbar className="toolbar">
                     <Typography variant="h5" className="shop-title" style={{ flexGrow: 1, fontFamily: 'Montserrat' }}>
                         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                             MyShop
                         </Link>
                     </Typography>
-                    <NavLink to="/shop" className="nav-link">
-                        <Button className="nav-button" color="inherit">Shop</Button>
-                    </NavLink>
-                    <NavLink to="/contact" className="nav-link">
-                        <Button className="nav-button" color="inherit">Contact</Button>
-                    </NavLink>
-                    <NavLink to="/about" className="nav-link">
-                        <Button className="nav-button" color="inherit">About</Button>
-                    </NavLink>
+                    <div className="nav-links">
+                        <NavLink to="/shop" className="nav-link">
+                            <Button className="nav-button" color="inherit">Shop</Button>
+                        </NavLink>
+                        <NavLink to="/contact" className="nav-link">
+                            <Button className="nav-button" color="inherit">Contact</Button>
+                        </NavLink>
+                        <NavLink to="/about" className="nav-link">
+                            <Button className="nav-button" color="inherit">About</Button>
+                        </NavLink>
+                    </div>
                     <Link to="/cart">
                         <IconButton edge="end" color="inherit">
                             <ShoppingCartIcon />
