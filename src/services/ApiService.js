@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000/api';
+const BASE_URL = `${process.env.REACT_APP_BACKEND_URL}/api` || 'http://127.0.0.1:8000/api';
 
 const API_URL_PRODUCTS = `${BASE_URL}/practice-shop/products/`;
 const API_URL_CATEGORIES = `${BASE_URL}/practice-shop/categories/`;
