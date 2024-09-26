@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import apiServiceInstance from '../../services/ApiService';
+import apiServiceInstance from '../../services/UserService';
 
 const theme = createTheme({
   palette: {
@@ -37,8 +37,12 @@ export default function AdminRegister() {
         email: email,
         password: password
       });
-      setSuccess('Registration successful!');
-      navigate('/admin/login');
+      setSuccess('Registration successful! Please wait for admin approval before you can log in.');
+
+      // Redirect delay to allow the user to read the success message
+      setTimeout(() => {
+        navigate('/admin/login');
+      }, 3000); // Redirect to login after 3 seconds
     } catch (err) {
       setError('Registration failed. Please try again.');
     }
