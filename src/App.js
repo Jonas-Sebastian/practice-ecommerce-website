@@ -8,9 +8,12 @@ import Footer from './components/PageLayout/Footer';
 import Cart from './components/CartPage/Cart';
 import { CartProvider } from './components/Context/CartContext';
 import { ToastContainer } from 'react-toastify';
+import AdminLayout from './components/AdminPage/AdminLayout';
 import AdminLogin from './components/AdminPage/AdminLogin';
-import AdminDashboard from './components/AdminPage/AdminDashboard';
+import AdminMainPage from './components/AdminPage/AdminMainPage';
 import AdminRegister from './components/AdminPage/AdminRegister';
+import AdminUserList from './components/AdminPage/AdminUserList';
+import AdminUserRegistration from './components/AdminPage/AdminUserRegistration';
 import PrivateRoute from './components/AdminPage/PrivateRoute';
 import Contact from './components/ShopInfo/ContactPage';
 import About from './components/ShopInfo/AboutPage';
@@ -33,14 +36,19 @@ export default function App() {
                 </Route>
 
                 {/* Admin Routes */}
-                <Route path="/admin" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
-                    (<Navigate to="/admin/login" />)}/>
-                <Route path="/admin/login" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
-                    (<AdminLogin />)}/>
-                <Route path="/admin/register" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/dashboard" />) : 
-                    (<AdminRegister />)}/>
-                {/* Protected route */}
-                <Route path="/admin/dashboard" element={<PrivateRoute component={AdminDashboard} />} />
+                <Route path="/admin" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/main" />) : 
+                    (<Navigate to="/admin/login" />)} />
+                <Route path="/admin/login" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/main" />) : 
+                    (<AdminLogin />)} />
+                <Route path="/admin/register" element={localStorage.getItem('adminToken') ? (<Navigate to="/admin/main" />) : 
+                    (<AdminRegister />)} />
+
+                <Route path="/admin/*" element={<PrivateRoute component={AdminLayout} />}>
+                    <Route path="main" element={<AdminMainPage />} />
+                    <Route path="users" element={<AdminUserList />} />
+                    <Route path="user-registration" element={<AdminUserRegistration />} />
+                    {/* Add more admin routes as needed */}
+                </Route>
             </Routes>
         </Router>
     );
