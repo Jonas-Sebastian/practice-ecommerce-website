@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import { Drawer, List, ListItem, ListItemText, ListItemButton, Divider, Collapse, Typography } from '@mui/material';
 import {
-    DashboardRounded as DashboardIcon,
     ShoppingCartRounded as ShoppingCartIcon,
     BarChartRounded as BarChartIcon,
     DescriptionRounded as DescriptionIcon,
-    LayersRounded as LayersIcon,
     ExpandLessRounded as ExpandLessIcon,
     ExpandMoreRounded as ExpandMoreIcon,
     PersonRounded as PersonRoundedIcon,
