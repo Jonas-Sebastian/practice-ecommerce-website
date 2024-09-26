@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL_REGISTER, API_URL_LOGIN } from './ApiService';
+import { API_URL_REGISTER, API_URL_LOGIN, API_URL_USERS } from './ApiService';
 
 class UserService {
     registerUser(data) {
@@ -11,15 +11,15 @@ class UserService {
     }
 
     getAllUsers() {
-        return axios.get('/api/shop-admin/admin-users/');
+        return axios.get(API_URL_USERS);
     }
 
     deleteUser(userId) {
-        return axios.delete(`/api/shop-admin/admin-users/${userId}/`);
+        return axios.delete(`${API_URL_USERS}${userId}/`);
     }
 
     updateUser(userId, data) {
-        return axios.put(`/api/shop-admin/admin-users/${userId}/`, data);
+        return axios.put(`${API_URL_USERS}${userId}/`, data);
     }
 }
 
