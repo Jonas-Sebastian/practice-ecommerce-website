@@ -118,7 +118,7 @@ export default function AdminProductEdit() {
                                     onClick={() => setIsImageExpanded(!isImageExpanded)} 
                                     sx={{ position: 'absolute', bgcolor: 'white', borderRadius: '50%', boxShadow: 2, top: 0, right: 0 }}
                                 >
-                                    {isImageExpanded ? <ZoomOutMapRounded fontSize="large" /> : <ZoomInMapRounded fontSize="large" />}
+                                    {isImageExpanded ? <ZoomInMapRounded fontSize="large" /> : <ZoomOutMapRounded fontSize="large" />}
                                 </IconButton>
                             </Box>
                         ) : (
@@ -144,7 +144,7 @@ export default function AdminProductEdit() {
                                     onClick={() => setIsPreviewImageExpanded(!isPreviewImageExpanded)} 
                                     sx={{ position: 'absolute', bgcolor: 'white', borderRadius: '50%', boxShadow: 2, top: 0, right: 0 }}
                                 >
-                                    {isPreviewImageExpanded ? <ZoomOutMapRounded fontSize="large" /> : <ZoomInMapRounded fontSize="large" />}
+                                    {isPreviewImageExpanded ? <ZoomInMapRounded fontSize="large" /> : <ZoomOutMapRounded fontSize="large" />}
                                 </IconButton>
                             </Box>
                         </Box>
