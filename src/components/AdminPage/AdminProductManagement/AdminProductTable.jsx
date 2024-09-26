@@ -9,6 +9,7 @@ export default function AdminProductTable({ products, onEditProduct, onDeletePro
                 <TableHead>
                     <TableRow>
                         <TableCell>ID</TableCell>
+                        <TableCell>Image</TableCell> {/* New column for images */}
                         <TableCell>Name</TableCell>
                         <TableCell>Category</TableCell>
                         <TableCell>Price</TableCell>
@@ -20,6 +21,13 @@ export default function AdminProductTable({ products, onEditProduct, onDeletePro
                     {products.map((product) => (
                         <TableRow key={product.id}>
                             <TableCell>{product.id}</TableCell>
+                            <TableCell>
+                                {product.image ? (
+                                    <img src={product.image} alt={product.name} style={{ width: '50px', height: '50px' }} />
+                                ) : (
+                                    'No Image'
+                                )}
+                            </TableCell>
                             <TableCell>{product.name}</TableCell>
                             <TableCell>{product.category.name}</TableCell>
                             <TableCell>{product.price}</TableCell>
