@@ -56,15 +56,22 @@ const CustomDrawer = styled(Drawer, {
 
 const NAV_ITEMS = [
     { kind: 'header', title: 'Main Items' },
-    { segment: 'users', title: 'Users', icon: <PersonRoundedIcon /> },
+    {
+        segment: 'users', title: 'Users Management', icon: <PersonRoundedIcon />,
+        children: [
+            { segment: 'users', title: 'Users List', icon: <ListIcon /> },
+            { segment: 'users/add', title: 'Add Users', icon: <AddCircleIcon /> },
+            { segment: 'users/pending', title: 'Pending Users', icon: <CategoryIcon /> },
+        ],
+    },
     { segment: 'orders', title: 'Orders', icon: <ShoppingCartIcon /> },
     { kind: 'divider' },
     { kind: 'header', title: 'Products' },
     {
         segment: 'products', title: 'Products Management', icon: <DescriptionIcon />,
         children: [
-            { segment: 'products/add', title: 'Add Product', icon: <AddCircleIcon /> },
             { segment: 'products', title: 'Product List', icon: <ListIcon /> },
+            { segment: 'products/add', title: 'Add Product', icon: <AddCircleIcon /> },
             { segment: 'categories', title: 'Categories', icon: <CategoryIcon /> },
         ],
     },
@@ -82,6 +89,7 @@ const NAV_ITEMS = [
 export default function AdminDrawer({ open, onToggleDrawer, onLogout }) {
     const [openReports, setOpenReports] = useState(false);
     const [openProducts, setOpenProducts] = useState(false);
+    const [openUsers, setOpenUsers] = useState(false);
     const navigate = useNavigate();
 
     const handleClickReports = () => {
@@ -98,11 +106,18 @@ export default function AdminDrawer({ open, onToggleDrawer, onLogout }) {
         }
     };
 
-    //Closes SubItems in the drawer if we collapse the drawer
+    const handleClickUsers = () => {
+        setOpenUsers(!openUsers);
+        if (!open) {
+            onToggleDrawer(true);
+        }
+    };
+
     useEffect(() => {
         if (!open) {
-            setOpenReports(false); 
+            setOpenReports(false);
             setOpenProducts(false);
+            setOpenUsers(false);
         }
     }, [open]);
 
@@ -132,18 +147,20 @@ export default function AdminDrawer({ open, onToggleDrawer, onLogout }) {
                                     if (item.segment === 'reports') {
                                         handleClickReports();
                                     } else if (item.segment === 'products') {
-                                        handleClickProducts(); // Handle Products Management click
+                                        handleClickProducts();
+                                    } else if (item.segment === 'users') {
+                                        handleClickUsers();
                                     } else {
                                         navigate(`/admin/${item.segment}`);
                                     }
                                 }}>
                                     {item.icon}
                                     <ListItemText primary={item.title} sx={{ display: open ? 'block' : 'none' }} />
-                                    {hasChildren ? (item.segment === 'reports' ? (openReports ? <ExpandLessIcon /> : <ExpandMoreIcon />) : (openProducts ? <ExpandLessIcon /> : <ExpandMoreIcon />)) : null}
+                                    {hasChildren ? (item.segment === 'reports' ? (openReports ? <ExpandLessIcon /> : <ExpandMoreIcon />) : (item.segment === 'products' ? (openProducts ? <ExpandLessIcon /> : <ExpandMoreIcon />) : (openUsers ? <ExpandLessIcon /> : <ExpandMoreIcon />))) : null}
                                 </ListItemButton>
                             </ListItem>
                             {hasChildren && (
-                                <Collapse in={item.segment === 'reports' ? openReports : openProducts} timeout="auto" unmountOnExit>
+                                <Collapse in={item.segment === 'reports' ? openReports : item.segment === 'products' ? openProducts : item.segment === 'users' ? openUsers : false} timeout="auto" unmountOnExit>
                                     <List component="div" disablePadding>
                                         {item.children.map((subItem, subIndex) => (
                                             <ListItem key={subIndex} disablePadding sx={{ pl: 4 }}>
