@@ -1,28 +1,28 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import Header from './components/PageLayout/Header';
-import ProductList from './components/ProductPage/ProductList';
-import ProductDetails from './components/ProductPage/ProductDetails';
-import Footer from './components/PageLayout/Footer';
-import Cart from './components/CartPage/Cart';
-import { CartProvider } from './components/Context/CartContext';
+import Header from './components/ShopWebsite/PageLayout/Header';
+import ProductList from './components/ShopWebsite/ProductPage/ProductList';
+import ProductDetails from './components/ShopWebsite/ProductPage/ProductDetails';
+import Footer from './components/ShopWebsite/PageLayout/Footer';
+import Cart from './components/ShopWebsite/CartPage/Cart';
+import { CartProvider } from './components/ShopWebsite/Context/CartContext';
 import { ToastContainer } from 'react-toastify';
 
 // Admin Page Imports
-import AdminLayout from './components/AdminPage/AdminUI/AdminLayout';
-import AdminLogin from './components/AdminPage/AdminAuthentication/AdminLogin';
-import AdminMainPage from './components/AdminPage/AdminMainPage';
-import AdminProductList from './components/AdminPage/AdminProductManagement/AdminProductList';
-import AdminRegister from './components/AdminPage/AdminAuthentication/AdminRegister';
-import AdminUserList from './components/AdminPage/AdminUserManagement/AdminUserList';
-import PrivateRoute from './components/AdminPage/AdminAuthentication/PrivateRoute';
+import AdminLayout from './components/AdminWebsite/AdminUI/AdminLayout';
+import AdminLogin from './components/AdminWebsite/AdminAuthentication/AdminLogin';
+import AdminMainPage from './components/AdminWebsite/AdminMainPage';
+import AdminProductList from './components/AdminWebsite/AdminProductManagement/AdminProductList';
+import AdminRegister from './components/AdminWebsite/AdminAuthentication/AdminRegister';
+import AdminUserList from './components/AdminWebsite/AdminUserManagement/AdminUserList';
+import PrivateRoute from './components/AdminWebsite/AdminAuthentication/PrivateRoute';
 
 // Shop Page Imports
-import Contact from './components/ShopInfo/ContactPage';
-import About from './components/ShopInfo/AboutPage';
-import HomePage from './components/HomePage/HomePage';
-import BackToTopButton from './components/PageLayout/BackToTop';
+import Contact from './components/ShopWebsite/ShopInfo/ContactPage';
+import About from './components/ShopWebsite/ShopInfo/AboutPage';
+import HomePage from './components/ShopWebsite/HomePage/HomePage';
+import BackToTopButton from './components/ShopWebsite/PageLayout/BackToTop';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
