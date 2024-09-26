@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import apiServiceInstance from '../../services/ApiService';
+import apiServiceInstance from '../../services/UserService';
 
 const theme = createTheme({
   palette: {
@@ -20,7 +20,6 @@ export default function AdminLogin() {
 
   // Function to check if the input is an email address
   const isEmail = (str) => {
-    // Simple regex for basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(str);
   };
@@ -29,19 +28,27 @@ export default function AdminLogin() {
     e.preventDefault();
 
     try {
-      const response = await apiServiceInstance.loginUser({
-        // Use email if input looks like an email address, otherwise use username
-        email: isEmail(usernameOrEmail) ? usernameOrEmail : undefined,
-        username: !isEmail(usernameOrEmail) ? usernameOrEmail : undefined,
-        password: password
-      });
-      
-      localStorage.setItem('adminToken', response.data.token);
-      navigate('/admin/dashboard'); // Redirect to the dashboard upon successful login
+        const response = await apiServiceInstance.loginUser({
+            email: isEmail(usernameOrEmail) ? usernameOrEmail : undefined,
+            username: !isEmail(usernameOrEmail) ? usernameOrEmail : undefined,
+            password: password,
+        });
+
+        localStorage.setItem('adminToken', response.data.token);
+        navigate('/admin/dashboard');
     } catch (err) {
-      setError('Invalid credentials or login failed');
+        // Handle specific error messages
+        if (err.response && err.response.data) {
+            if (err.response.data.non_field_errors) {
+                setError(err.response.data.non_field_errors[0]);
+            } else {
+                setError('Invalid credentials or login failed'); // Default error message
+            }
+        } else {
+            setError('An error occurred. Please try again.');
+        }
     }
-  };
+};
 
   const handleNavigateToRegister = () => {
     navigate('/admin/register');
