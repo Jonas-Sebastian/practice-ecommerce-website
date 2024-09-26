@@ -8,12 +8,17 @@ import Footer from './components/PageLayout/Footer';
 import Cart from './components/CartPage/Cart';
 import { CartProvider } from './components/Context/CartContext';
 import { ToastContainer } from 'react-toastify';
+
+// Admin Page Imports
 import AdminLayout from './components/AdminPage/AdminUI/AdminLayout';
 import AdminLogin from './components/AdminPage/AdminAuthentication/AdminLogin';
 import AdminMainPage from './components/AdminPage/AdminMainPage';
+import AdminProductList from './components/AdminPage/AdminProductManagement/AdminProductList';
 import AdminRegister from './components/AdminPage/AdminAuthentication/AdminRegister';
 import AdminUserList from './components/AdminPage/AdminUserManagement/AdminUserList';
 import PrivateRoute from './components/AdminPage/AdminAuthentication/PrivateRoute';
+
+// Shop Page Imports
 import Contact from './components/ShopInfo/ContactPage';
 import About from './components/ShopInfo/AboutPage';
 import HomePage from './components/HomePage/HomePage';
@@ -45,6 +50,7 @@ export default function App() {
                 <Route path="/admin/*" element={<PrivateRoute component={AdminLayout} />}>
                     <Route path="main" element={<AdminMainPage />} />
                     <Route path="users" element={<AdminUserList />} />
+                    <Route path="products" element={<AdminProductList />} />
                     {/* Add more admin routes as needed */}
                 </Route>
             </Routes>

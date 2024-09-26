@@ -63,8 +63,8 @@ const NAV_ITEMS = [
     {
         segment: 'products', title: 'Products Management', icon: <DescriptionIcon />,
         children: [
-            { segment: 'add', title: 'Add Product', icon: <AddCircleIcon /> },
-            { segment: 'list', title: 'Product List', icon: <ListIcon /> },
+            { segment: 'products/add', title: 'Add Product', icon: <AddCircleIcon /> },
+            { segment: 'products', title: 'Product List', icon: <ListIcon /> },
             { segment: 'categories', title: 'Categories', icon: <CategoryIcon /> },
         ],
     },
