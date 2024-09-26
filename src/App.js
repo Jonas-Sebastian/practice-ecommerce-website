@@ -13,7 +13,6 @@ import AdminLogin from './components/AdminPage/AdminLogin';
 import AdminMainPage from './components/AdminPage/AdminMainPage';
 import AdminRegister from './components/AdminPage/AdminRegister';
 import AdminUserList from './components/AdminPage/AdminUserList';
-import AdminUserRegistration from './components/AdminPage/AdminUserRegistration';
 import PrivateRoute from './components/AdminPage/PrivateRoute';
 import Contact from './components/ShopInfo/ContactPage';
 import About from './components/ShopInfo/AboutPage';
@@ -46,7 +45,6 @@ export default function App() {
                 <Route path="/admin/*" element={<PrivateRoute component={AdminLayout} />}>
                     <Route path="main" element={<AdminMainPage />} />
                     <Route path="users" element={<AdminUserList />} />
-                    <Route path="user-registration" element={<AdminUserRegistration />} />
                     {/* Add more admin routes as needed */}
                 </Route>
             </Routes>
