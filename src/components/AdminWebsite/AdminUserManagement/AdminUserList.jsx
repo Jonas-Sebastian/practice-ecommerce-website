@@ -19,12 +19,6 @@ export default function AdminUserList() {
         }
     };
 
-    const handleEditUser = (userId) => {
-        console.log('Edit user:', userId);
-        // Redirect to edit page or open a modal
-        window.location.href = `/admin/users/${userId}`; // Assuming this is your edit route
-    };
-
     const handleDeleteUser = async (userId) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
             try {
@@ -39,7 +33,7 @@ export default function AdminUserList() {
     return (
         <Box>
             <h2>User List</h2>
-            <AdminUserTable users={users} onEditUser={handleEditUser} onDeleteUser={handleDeleteUser} />
+            <AdminUserTable users={users} setUsers={setUsers} onDeleteUser={handleDeleteUser} />
         </Box>
     );
 }
