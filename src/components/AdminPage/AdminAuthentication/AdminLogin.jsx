@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import apiServiceInstance from '../../services/UserService';
+import apiServiceInstance from '../../../services/UserService';
 
 const theme = createTheme({
   palette: {

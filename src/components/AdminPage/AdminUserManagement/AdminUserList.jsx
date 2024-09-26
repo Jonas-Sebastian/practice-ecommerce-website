@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import AdminUserTable from './AdminUserTable';
-import userServiceInstance from '../../services/UserService';
+import userServiceInstance from '../../../services/UserService';
 
 export default function AdminUserList() {
     const [users, setUsers] = useState([]);
