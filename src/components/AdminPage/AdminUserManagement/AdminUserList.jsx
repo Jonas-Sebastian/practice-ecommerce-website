@@ -22,7 +22,7 @@ export default function AdminUserList() {
     const handleEditUser = (userId) => {
         console.log('Edit user:', userId);
         // Redirect to edit page or open a modal
-        window.location.href = `/admin/user-registration/${userId}`; // Assuming this is your edit route
+        window.location.href = `/admin/users/${userId}`; // Assuming this is your edit route
     };
 
     const handleDeleteUser = async (userId) => {
