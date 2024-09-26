@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProductService from '../../services/ApiService';
+import ProductService from '../../services/ProductService';
 import ProductCard from './ProductCard';
 import { useCart } from '../Context/CartContext';
 import { toast } from 'react-toastify';

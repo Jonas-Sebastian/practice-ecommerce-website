@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import apiServiceInstance from '../../services/ApiService';
+import apiServiceInstance from '../../services/HeroImageService';
 
 const HeroBanner = () => {
   const [bannerImage, setBannerImage] = useState('');
