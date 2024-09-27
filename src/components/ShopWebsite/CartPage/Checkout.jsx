@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router-dom';
 import CheckoutFormFields from './CheckoutFormFields';
 import OrderSummary from './OrderSummary';
-import PaymentMethodFields from './PaymentMethodFields'; // Import the new component
-
+import PaymentMethodFields from './PaymentMethodFields';
 export default function Checkout() {
     const location = useLocation();
     const { cartItems, totalPrice } = location.state || { cartItems: [], totalPrice: 0 };
@@ -24,6 +23,11 @@ export default function Checkout() {
         mayaEmail: ''
     });
     const [isChecked, setIsChecked] = useState(false);
+
+    // Redirect if the cart is empty
+    if (!cartItems || cartItems.length === 0) {
+        return <Navigate to="/cart" replace />;
+    }
 
     const handleCheckboxChange = () => {
         setIsChecked(!isChecked);
