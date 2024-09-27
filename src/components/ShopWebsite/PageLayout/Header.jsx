@@ -24,6 +24,9 @@ export default function Header() {
                         <NavLink to="/about" className="nav-link">
                             <Button className="nav-button" color="inherit">About</Button>
                         </NavLink>
+                        <NavLink to="/roadmap" className="nav-link">
+                            <Button className="nav-button" color="inherit" style={{ lineHeight: 1.5 }}>Features Roadmap</Button>
+                        </NavLink>
                     </div>
                     <Link to="/cart">
                         <IconButton edge="end" color="inherit">

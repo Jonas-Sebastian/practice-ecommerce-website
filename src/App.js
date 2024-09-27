@@ -23,6 +23,7 @@ import PrivateRoute from './components/AdminWebsite/AdminAuthentication/PrivateR
 // Shop Page Imports
 import Contact from './components/ShopWebsite/ShopInfo/ContactPage';
 import About from './components/ShopWebsite/ShopInfo/AboutPage';
+import FeaturesRoadmap from './components/ShopWebsite/ShopInfo/FeaturesRoadmap';
 import HomePage from './components/ShopWebsite/HomePage/HomePage';
 import BackToTopButton from './components/ShopWebsite/PageLayout/BackToTop';
 import Checkout from './components/ShopWebsite/CartPage/Checkout';
@@ -41,6 +42,7 @@ export default function App() {
                     <Route path="/shop" element={<ProductList />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/roadmap" element={<FeaturesRoadmap />} />
                 </Route>
 
                 {/* Admin Routes */}
@@ -57,7 +59,6 @@ export default function App() {
                     <Route path="products" element={<AdminProductList />} />
                     <Route path="products/add" element={<AdminProductAdd />} />
                     <Route path="products/:id" element={<AdminProductEdit />} />
-                    {/* Add more admin routes as needed */}
                 </Route>
             </Routes>
         </Router>

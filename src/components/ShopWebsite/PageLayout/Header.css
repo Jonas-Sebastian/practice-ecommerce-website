@@ -105,6 +105,10 @@
     padding: 0;
     font-family: 'Montserrat', sans-serif; 
     min-width: 100px;
+    max-width: 150px; /* Set a max width to allow wrapping */
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Optional: add ellipsis for overflowed text */
     border-radius: 0;
 }
 
