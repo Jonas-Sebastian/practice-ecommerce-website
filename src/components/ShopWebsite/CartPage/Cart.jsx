@@ -32,7 +32,16 @@ export default function Cart() {
                 </div>
 
                 {/* Total Section */}
-                <OrderSummary cartItems={cartItems} totalPrice={totalPrice} />
+                <div className="lg:w-1/3 w-full flex flex-col items-center">
+                    <OrderSummary cartItems={cartItems} totalPrice={totalPrice} isCheckout={false} />
+                    <Link 
+                        to="/checkout" 
+                        state={{ cartItems, totalPrice }} 
+                        className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded text-center"
+                    >
+                        Checkout
+                    </Link>
+                </div>
             </div>
         </div>
     );
