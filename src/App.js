@@ -25,6 +25,7 @@ import Contact from './components/ShopWebsite/ShopInfo/ContactPage';
 import About from './components/ShopWebsite/ShopInfo/AboutPage';
 import HomePage from './components/ShopWebsite/HomePage/HomePage';
 import BackToTopButton from './components/ShopWebsite/PageLayout/BackToTop';
+import Checkout from './components/ShopWebsite/CartPage/Checkout';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/products/:id" element={<ProductDetails />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/checkout" element={<Checkout />} />
                     <Route path="/shop" element={<ProductList />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/about" element={<About />} />
