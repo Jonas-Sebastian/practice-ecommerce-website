@@ -37,10 +37,14 @@ export default function Cart() {
                     <Link 
                         to="/checkout" 
                         state={{ cartItems, totalPrice }} 
-                        className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded text-center"
+                        className={`mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded text-center ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={cartItems.length === 0 ? (e) => e.preventDefault() : null}
                     >
                         Checkout
                     </Link>
+                    {cartItems.length === 0 && (
+                        <p className="text-red-500 mt-2">You must have items in your cart to proceed to checkout.</p>
+                    )}
                 </div>
             </div>
         </div>
