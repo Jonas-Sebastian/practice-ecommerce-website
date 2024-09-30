@@ -50,12 +50,36 @@ const FeaturesRoadmap = () => {
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other frontend shop features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
             { title: 'Create Features Roadmap Page', isDone: true, details: 'A page to show all the finished features.', date: 'September 28, 2024' },
             { title: 'Improved Checkout Process', isDone: false, details: 'Streamlining the checkout experience.' },
+            { title: 'Search and Filter Products', isDone: false, details: 'A basic search and filter functionality to help customers easily find products.' },
         ],
 
         // Front End Admin Changes
         frontendAdminChanges: [
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other admin management features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
             { title: 'Orders Viewing Page', isDone: false, details: 'Admin can view orders placed by customers.' },
+            { title: 'Orders Management Page', isDone: false, details: 'Admin can manage the status of orders placed by customers.' },
+            { title: 'Orders Email Notification', isDone: false, details: 'To be implemented along with Order Management. Order Status updates made by Admin will also send emails to customer.' },
+            { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
+            { title: 'Sales Reports', isDone: false,
+                details: `
+                  - **Total Sales:** Overall revenue generated during a specific period.
+                  
+                  - **Number of Orders:** Total count of completed orders.
+                  
+                  - **Average Order Value (AOV):** Average amount spent per order, calculated by dividing total sales by the number of orders.
+                  
+                  - **Top-Selling Products:** A list of products that generated the highest sales, helping identify popular items.
+                  
+                  - **Sales Trends:** Graphs showing sales over time (daily, weekly, or monthly) to identify patterns or peak sales periods.
+                  
+                  - **Customer Demographics:** Insights into who is purchasing (if available), such as location or device used.
+                  
+                  - **Refunds and Returns:** Data on any refunded or returned items, helping assess customer satisfaction.
+                  
+                  - **Conversion Rate:** Percentage of visitors who made a purchase, indicating how effectively the site is turning traffic into sales.
+                `
+              },
+              { title: 'Traffic Reports', isDone: false, details: 'Using Google Analytics.' },
         ],
 
         // Back End Changes
@@ -66,7 +90,7 @@ const FeaturesRoadmap = () => {
 
         // Never Implement
         neverImplemented: [
-            { title: 'Stripe Online Payment Integration', isDone: false, details: 'Not implementing due to portfolio limitations.' },
+            { title: 'Online Payment Integration', isDone: false, details: 'Ex. Stripe, Paymongo. Not implementing due to portfolio limitations.' },
         ],
     };
 
