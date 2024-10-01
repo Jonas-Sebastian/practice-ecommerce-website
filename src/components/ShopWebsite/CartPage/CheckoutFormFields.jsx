@@ -71,11 +71,12 @@ const CheckoutFormFields = ({
                     required
                 >
                     <option value="">Select a payment method</option>
-                    <option value="credit-card">Credit Card</option>
+                    <option value="credit_card">Credit Card</option>
                     <option value="paypal">PayPal</option>
-                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="bank_transfer">Bank Transfer</option>
                     <option value="gcash">GCash</option>
                     <option value="maya">Maya</option>
+                    <option value="cod">Cash on Delivery</option>
                 </select>
             </div>
         </div>
