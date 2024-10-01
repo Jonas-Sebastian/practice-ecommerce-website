@@ -55,8 +55,12 @@ export function CartProvider({ children }) {
         });
     };
 
+    const handleClearCart = () => {
+        setCart({});
+    };  
+
     return (
-        <CartContext.Provider value={{ cart, handleAddToCart, handleRemoveOne, handleRemoveAll, handleQuantityChange }}>
+        <CartContext.Provider value={{ cart, handleAddToCart, handleRemoveOne, handleRemoveAll, handleQuantityChange, handleClearCart }}>
             {children}
         </CartContext.Provider>
     );
