@@ -6,3 +6,4 @@ export const API_URL_CATEGORIES = `${BASE_URL}/practice-shop/categories/`; // Ca
 export const API_URL_REGISTER = `${BASE_URL}/shop-admin/register/`; // UserSerivce.js : for handling admin/staff account registration
 export const API_URL_LOGIN = `${BASE_URL}/shop-admin/login/`; // UserSerivce.js : for handling login authentication
 export const API_URL_HERO_IMAGES = `${BASE_URL}/shop-images/hero-images/`; // HeroImageService.js : for updating/deleting the Shop Home Page banner/image
+export const API_URL_ORDERS = `${BASE_URL}/practice-shop/orders/`; // OrderService.js : for managing orders (create, update, delete)
