@@ -3,7 +3,7 @@ import React from 'react';
 const PaymentMethodFields = ({ selectedPaymentMethod, cardDetails, setCardDetails }) => {
     return (
         <div>
-            {selectedPaymentMethod === 'credit-card' && (
+            {selectedPaymentMethod === 'credit_card' && (
                 <div>
                     <div className="mb-4">
                         <label className="block mb-1" htmlFor="cardNumber">Card Number</label>
@@ -57,7 +57,7 @@ const PaymentMethodFields = ({ selectedPaymentMethod, cardDetails, setCardDetail
                 </div>
             )}
 
-            {selectedPaymentMethod === 'bank-transfer' && (
+            {selectedPaymentMethod === 'bank_transfer' && (
                 <div>
                     <div className="mb-4">
                         <label className="block mb-1" htmlFor="accountName">Account Name</label>
@@ -95,35 +95,15 @@ const PaymentMethodFields = ({ selectedPaymentMethod, cardDetails, setCardDetail
                 </div>
             )}
 
-            {selectedPaymentMethod === 'gcash' && (
-                <div>
-                    <div className="mb-4">
-                        <label className="block mb-1" htmlFor="gcashNumber">GCash Number</label>
-                        <input
-                            type="text"
-                            id="gcashNumber"
-                            className="w-full p-2 border border-gray-300 rounded"
-                            value={cardDetails.gcashNumber}
-                            onChange={(e) => setCardDetails({ ...cardDetails, gcashNumber: e.target.value })}
-                            required
-                        />
-                    </div>
+            {(selectedPaymentMethod === 'gcash' || selectedPaymentMethod === 'maya') && (
+                <div className="mb-4">
+                    <p>QR code will be generated after you place the order.</p>
                 </div>
             )}
 
-            {selectedPaymentMethod === 'maya' && (
-                <div>
-                    <div className="mb-4">
-                        <label className="block mb-1" htmlFor="mayaEmail">Maya Email</label>
-                        <input
-                            type="email"
-                            id="mayaEmail"
-                            className="w-full p-2 border border-gray-300 rounded"
-                            value={cardDetails.mayaEmail}
-                            onChange={(e) => setCardDetails({ ...cardDetails, mayaEmail: e.target.value })}
-                            required
-                        />
-                    </div>
+            {selectedPaymentMethod === 'cod' && (
+                <div className="mb-4">
+                    <p>Cash on Delivery selected. No additional information needed.</p>
                 </div>
             )}
         </div>
