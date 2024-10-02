@@ -62,6 +62,7 @@ const FeaturesRoadmap = () => {
             { title: 'Orders Viewing Page', isDone: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Orders Status Management', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Orders Details Collapsible Rows', isDone: false, details: 'Admin can see the details of each Order by clicking on the row.', },
+            { title: 'Improve UI', isDone: false, details: 'Improve the UI design.' },
             { title: 'Sales Reports', isDone: false,
                 details: `
                   - **Total Sales:** Overall revenue generated during a specific period.
