@@ -50,6 +50,15 @@ class OrderService {
             throw new Error('Error deleting order: ' + error.message);
         }
     }
+
+    async getStatusChoices() {
+        try {
+            const response = await axios.get(`${API_URL_ORDERS}status-choices/`);
+            return response.data;
+        } catch (error) {
+            throw new Error('Error fetching status choices: ' + error.message);
+        }
+    }
 }
 
 const orderServiceInstance = new OrderService();
