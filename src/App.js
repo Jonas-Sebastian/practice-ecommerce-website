@@ -18,6 +18,7 @@ import AdminProductList from './components/AdminWebsite/AdminProductManagement/A
 import AdminProductEdit from './components/AdminWebsite/AdminProductManagement/AdminProductEdit';
 import AdminRegister from './components/AdminWebsite/AdminAuthentication/AdminRegister';
 import AdminUserList from './components/AdminWebsite/AdminUserManagement/AdminUserList';
+import AdminOrderList from './components/AdminWebsite/AdminOrderManagement/AdminOrderList';
 import PrivateRoute from './components/AdminWebsite/AdminAuthentication/PrivateRoute';
 
 // Shop Page Imports
@@ -59,6 +60,7 @@ export default function App() {
                     <Route path="products" element={<AdminProductList />} />
                     <Route path="products/add" element={<AdminProductAdd />} />
                     <Route path="products/:id" element={<AdminProductEdit />} />
+                    <Route path="orders" element={<AdminOrderList />} />
                 </Route>
             </Routes>
         </Router>

@@ -56,7 +56,7 @@ const FeaturesRoadmap = () => {
         // Front End Admin Changes
         frontendAdminChanges: [
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other admin management features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
-            { title: 'Orders Viewing Page', isDone: false, details: 'Admin can view orders placed by customers.' },
+            { title: 'Orders Viewing Page', isTrue: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Orders Management Page', isDone: false, details: 'Admin can manage the status of orders placed by customers.' },
             { title: 'Orders Email Notification', isDone: false, details: 'To be implemented along with Order Management. Order Status updates made by Admin will also send emails to customer.' },
             { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
@@ -85,7 +85,7 @@ const FeaturesRoadmap = () => {
         // Back End Changes
         backendChanges: [
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other backend features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
-            { title: 'Update Orders Backend', isDone: true, details: 'Update Orders Backend model to handle more order details.', date: 'October 1, 2024', },
+            { title: 'Update Orders Backend', isDone: true, details: 'Update Orders Backend model to handle more order details.', date: 'October 2, 2024', },
         ],
 
         // Never Implement
@@ -94,7 +94,7 @@ const FeaturesRoadmap = () => {
         ],
     };
 
-    const lastUpdatedDate = "Last updated: September 28, 2024"; // Update this date as needed
+    const lastUpdatedDate = "Last updated: October 2, 2024";
 
     return (
         <Box sx={{ p: 3, width: '70%', mx: 'auto' }}>
