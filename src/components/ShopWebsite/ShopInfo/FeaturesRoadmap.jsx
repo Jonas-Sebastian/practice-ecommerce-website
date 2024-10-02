@@ -53,13 +53,15 @@ const FeaturesRoadmap = () => {
             { title: 'Create Features Roadmap Page', isDone: true, details: 'A page to show all the finished features.', date: 'September 28, 2024' },
             { title: 'Create Place Order functionality', isDone: true, details: 'Customer Order details gets properly sent and saved to the database.', date: 'October 1, 2024', },
             { title: 'Search and Filter Products', isDone: false, details: 'A basic search and filter functionality to help customers easily find products.' },
+            { title: 'Improve UI', isDone: false, details: 'Improve the UI design.' },
         ],
 
         // Front End Admin Changes
         frontendAdminChanges: [
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other admin management features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
             { title: 'Orders Viewing Page', isDone: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
-            { title: 'Orders Status Management Page', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
+            { title: 'Orders Status Management', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
+            { title: 'Orders Details Collapsible Rows', isDone: false, details: 'Admin can see the details of each Order by clicking on the row.', },
             { title: 'Sales Reports', isDone: false,
                 details: `
                   - **Total Sales:** Overall revenue generated during a specific period.
@@ -72,11 +74,8 @@ const FeaturesRoadmap = () => {
                   
                   - **Sales Trends:** Graphs showing sales over time (daily, weekly, or monthly) to identify patterns or peak sales periods.
                   
-                  - **Customer Demographics:** Insights into who is purchasing (if available), such as location or device used.
-                  
                   - **Refunds and Returns:** Data on any refunded or returned items, helping assess customer satisfaction.
                   
-                  - **Conversion Rate:** Percentage of visitors who made a purchase, indicating how effectively the site is turning traffic into sales.
                 `
               },
               { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
