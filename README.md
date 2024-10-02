@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# My eCommerce Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Welcome to my eCommerce portfolio! This site showcases my skills in web development through both the frontend and backend of an online shopping platform.
 
-## Available Scripts
+### Live Demo
+If you prefer to explore the portfolio without installing anything, you can access the live versions here:
+- **Frontend Shop:** [View Frontend Live](https://jonas-sebastian-shop.vercel.app/)
+- **Frontend Admin Management:** [View Admin Panel](https://jonas-sebastian-shop.vercel.app/admin)
 
-In the project directory, you can run:
+**Note:** It may take a moment for the backend data to load due to hosting limitations on Render.
 
-### `npm start`
+### Testing Credentials
+For the Admin Management panel, you can use the following credentials:
+- **Username:** `user`
+- **Password:** `user`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Local Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+If you'd like to install the portfolio locally, follow these steps:
 
-### `npm test`
+### Frontend Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Download the Frontend Repository:**
+   - Click the green "Code" button on the [frontend repository](https://github.com/Jonas-Sebastian/practice-ecommerce-website) and select "Download ZIP."
 
-### `npm run build`
+2. **Unpack the ZIP File:**
+   - Locate the downloaded ZIP file on your computer and unzip it.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Open the Folder in Your Preferred IDE:**
+   - Launch any IDE of your choice (such as Visual Studio Code) and open the frontend folder you just unpacked.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Install Node.js**: 
+   - Ensure you have [Node.js](https://nodejs.org/) installed on your computer. This is required to run the frontend application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Open the Terminal**: 
+   - You can use Command Prompt, PowerShell, or the integrated terminal in your IDE.
 
-### `npm run eject`
+6. **Install Dependencies**:
+   - Run the following command in your terminal:
+     ```bash
+     npm install
+     ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+7. **Run the Frontend**:
+   - Start the frontend application by running:
+     ```bash
+     npm start
+     ```
+   - Access the frontend in your web browser at `http://localhost:3000` (or the specified port).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Download the Backend Repository:**
+   - Click the green "Code" button on the [backend repository](https://github.com/Jonas-Sebastian/practice-ecommerce-website-backend) and select "Download ZIP."
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Unpack the ZIP File:**
+   - Locate the downloaded ZIP file on your computer and unzip it.
 
-## Learn More
+3. **Open the Folder in Your Preferred IDE:**
+   - Launch any IDE of your choice and open the backend folder you just unpacked.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Install Python and Django**:
+   - Ensure you have [Python](https://www.python.org/) installed on your computer.
+   - Install Django using pip:
+     ```bash
+     pip install django
+     ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. **Run Database Migrations**:
+   - In the terminal, navigate to the backend directory and run:
+     ```bash
+     python manage.py migrate
+     ```
 
-### Code Splitting
+6. **Run the Backend Server**:
+   - Start the backend server by running:
+     ```bash
+     python manage.py runserver
+     ```
+   - The backend server will be running locally at `http://localhost:8000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Important:** Make sure to run both the frontend and backend servers at the same time for the application to function correctly.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+Feel free to reach out to me at [sebastian.jonasmiguel@gmail.com] or connect with me on [LinkedIn](https://www.linkedin.com/in/jonas-miguel-sebastian-5913a528a/).
