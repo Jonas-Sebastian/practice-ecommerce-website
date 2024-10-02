@@ -60,20 +60,22 @@ If you'd like to install the portfolio locally, follow these steps:
 3. **Open the Folder in Your Preferred IDE:**
    - Launch any IDE of your choice and open the backend folder you just unpacked.
 
-4. **Install Python and Django**:
+4. **Install Python**:
    - Ensure you have [Python](https://www.python.org/) installed on your computer.
-   - Install Django using pip:
+
+5. **Install Django and Django REST Framework**:
+   - Use pip to install both Django and Django REST Framework at the same time:
      ```bash
-     pip install django
+     pip install django djangorestframework
      ```
 
-5. **Run Database Migrations**:
+6. **Run Database Migrations**:
    - In the terminal, navigate to the backend directory and run:
      ```bash
      python manage.py migrate
      ```
 
-6. **Run the Backend Server**:
+7. **Run the Backend Server**:
    - Start the backend server by running:
      ```bash
      python manage.py runserver
