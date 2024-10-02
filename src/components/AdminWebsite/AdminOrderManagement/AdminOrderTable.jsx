@@ -79,6 +79,7 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
             <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
                 <Select
                     value={order.status || 'Pending'}
+                    onClick={(e) => e.stopPropagation()}
                     onChange={(e) => {
                         const newStatus = e.target.value;
                         updateOrderStatus(order.id, newStatus);

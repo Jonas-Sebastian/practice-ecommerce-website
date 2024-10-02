@@ -56,9 +56,11 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
 
   const Row = ({ row }) => {
     const [open, setOpen] = React.useState(false);
-    
-    const handleRowClick = () => {
-      setOpen(prevOpen => !prevOpen);
+
+    const handleRowClick = (e) => {
+        if (e.target.tagName !== 'SELECT' && e.target.tagName !== 'INPUT') {
+            setOpen(prevOpen => !prevOpen);
+        }
     };
   
     return (
