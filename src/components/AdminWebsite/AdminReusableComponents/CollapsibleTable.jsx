@@ -56,11 +56,16 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
 
   const Row = ({ row }) => {
     const [open, setOpen] = React.useState(false);
+    
+    const handleRowClick = () => {
+      setOpen(prevOpen => !prevOpen);
+    };
+  
     return (
       <React.Fragment>
-        <TableRow>
+        <TableRow onClick={handleRowClick}>
           <TableCell>
-            <IconButton size="small" onClick={() => setOpen(!open)}>
+            <IconButton size="small" onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </TableCell>
