@@ -14,7 +14,9 @@ const FeatureItem = ({ title, isDone, details, date, isPreRoadmap }) => {
 
     const getBackgroundColor = () => {
         if (isDone) return '#d4edda'; // Light green for done
-        if (details.includes('Not implementing')) return '#f8d7da'; // Light red for never implemented
+        if (details.includes('Not implementing') || details.includes('Will no longer implement')) {
+            return '#f8d7da'; // Light red for never implemented
+        }
         return '#fff3cd'; // Light yellow for not done
     };
 
@@ -56,10 +58,8 @@ const FeaturesRoadmap = () => {
         // Front End Admin Changes
         frontendAdminChanges: [
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other admin management features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
-            { title: 'Orders Viewing Page', isTrue: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
-            { title: 'Orders Management Page', isDone: false, details: 'Admin can manage the status of orders placed by customers.' },
-            { title: 'Orders Email Notification', isDone: false, details: 'To be implemented along with Order Management. Order Status updates made by Admin will also send emails to customer.' },
-            { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
+            { title: 'Orders Viewing Page', isDone: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
+            { title: 'Orders Status Management Page', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Sales Reports', isDone: false,
                 details: `
                   - **Total Sales:** Overall revenue generated during a specific period.
@@ -79,6 +79,7 @@ const FeaturesRoadmap = () => {
                   - **Conversion Rate:** Percentage of visitors who made a purchase, indicating how effectively the site is turning traffic into sales.
                 `
               },
+              { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
               { title: 'Traffic Reports', isDone: false, details: 'Using Google Analytics.' },
         ],
 
@@ -91,6 +92,7 @@ const FeaturesRoadmap = () => {
         // Never Implement
         neverImplemented: [
             { title: 'Online Payment Integration', isDone: false, details: 'Ex. Stripe, Paymongo. Not implementing due to portfolio limitations.' },
+            { title: 'Orders Email Notification', isDone: false, details: 'Will no longer implement. || Old Text: To be implemented along with Order Management. Order Status updates made by Admin will also send emails to customer.' },
         ],
     };
 
