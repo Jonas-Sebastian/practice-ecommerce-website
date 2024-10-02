@@ -74,9 +74,8 @@ export default function Checkout() {
             shipping_address: address,
             order_notes: shippingNotes,
             payment_method: selectedPaymentMethod,
-            products: cartItems.map(item => ({
-                product: item.name,
-                product_id: item.id,
+            order_items: cartItems.map(item => ({
+                product: item.id,
                 quantity: item.quantity,
                 price: parseFloat(item.price),
             })),
