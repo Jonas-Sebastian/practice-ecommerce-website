@@ -19,11 +19,6 @@ export default function AdminOrderList() {
         }
     };
 
-    const handleEditOrder = (orderId) => {
-        console.log('Edit order:', orderId);
-        window.location.href = `/admin/orders/${orderId}`;  // Adjust the route for orders
-    };
-
     const handleDeleteOrder = async (orderId) => {
         if (window.confirm('Are you sure you want to delete this order?')) {
             try {
@@ -39,8 +34,8 @@ export default function AdminOrderList() {
         <Box>
             <h2>Order List</h2>
             <AdminOrderTable 
-                orders={orders}  // Pass orders instead of products
-                onEditOrder={handleEditOrder} 
+                orders={orders} 
+                setOrders={setOrders}
                 onDeleteOrder={handleDeleteOrder} 
             />
         </Box>
