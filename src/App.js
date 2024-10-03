@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import AdminLayout from './components/AdminWebsite/AdminUI/AdminLayout';
 import AdminLogin from './components/AdminWebsite/AdminAuthentication/AdminLogin';
 import AdminMainPage from './components/AdminWebsite/AdminMainPage';
+import AdminPendingUserList from './components/AdminWebsite/AdminUserManagement/AdminPendingUserList';
 import AdminProductAdd from './components/AdminWebsite/AdminProductManagement/AdminProductAdd';
 import AdminProductList from './components/AdminWebsite/AdminProductManagement/AdminProductList';
 import AdminProductEdit from './components/AdminWebsite/AdminProductManagement/AdminProductEdit';
@@ -57,6 +58,7 @@ export default function App() {
                 <Route path="/admin/*" element={<PrivateRoute component={AdminLayout} />}>
                     <Route path="main" element={<AdminMainPage />} />
                     <Route path="users" element={<AdminUserList />} />
+                    <Route path="users/pending" element={<AdminPendingUserList />} />
                     <Route path="products" element={<AdminProductList />} />
                     <Route path="products/add" element={<AdminProductAdd />} />
                     <Route path="products/:id" element={<AdminProductEdit />} />
