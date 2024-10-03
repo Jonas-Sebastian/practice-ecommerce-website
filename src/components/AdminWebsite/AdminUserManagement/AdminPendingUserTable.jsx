@@ -34,7 +34,7 @@ export default function AdminPendingUserTable({ pendingUsers, setPendingUsers, o
         };
 
         try {
-            const response = await userServiceInstance.updateUser(userId, updateData);
+            await userServiceInstance.updateUser(userId, updateData);
             // Update the pending users array locally
             const updatedUsers = pendingUsers.filter(user => user.id !== userId);
             setPendingUsers(updatedUsers);
