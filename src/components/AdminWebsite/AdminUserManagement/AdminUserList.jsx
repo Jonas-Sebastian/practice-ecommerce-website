@@ -13,7 +13,9 @@ export default function AdminUserList() {
     const fetchUsers = async () => {
         try {
             const response = await userServiceInstance.getAllUsers();
-            setUsers(response.data);
+            // Filter users where is_approved is true
+            const approvedUsers = response.data.filter(user => user.is_approved);
+            setUsers(approvedUsers);
         } catch (error) {
             console.error('Error fetching users:', error);
         }
