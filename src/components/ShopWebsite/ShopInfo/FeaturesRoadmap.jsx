@@ -61,6 +61,7 @@ const FeaturesRoadmap = () => {
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other admin management features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
             { title: 'Orders Viewing Page', isDone: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Orders Status Management', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
+            { title: 'Admin Pending User Page', isDone: true, details: 'Admin can view and manage the approval of users who register.', date: 'October 3, 2024', },
             { title: 'Orders Details Collapsible Rows', isDone: false, details: 'Admin can see the details of each Order by clicking on the row.', },
             { title: 'Design Editor for Customizing Site Elements', isDone: false, details: 'Admin can change parts of the design of the website. Parts that can be changed are undecided for now except for the Hero Banner.', },
             { title: 'Improve UI', isDone: false, details: 'Improve the UI design.' },
@@ -97,7 +98,7 @@ const FeaturesRoadmap = () => {
         ],
     };
 
-    const lastUpdatedDate = "Last updated: October 2, 2024";
+    const lastUpdatedDate = "Last updated: October 3, 2024";
 
     return (
         <Box sx={{ p: 3, width: '70%', mx: 'auto' }}>
