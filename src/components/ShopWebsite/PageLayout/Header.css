@@ -108,11 +108,25 @@
     max-width: 150px; /* Set a max width to allow wrapping */
     white-space: normal; /* Allow text to wrap */
     overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Optional: add ellipsis for overflowed text */
+    text-overflow: ellipsis;
     border-radius: 0;
 }
 
 .nav-links {
-    display: flex; /* Use flexbox for horizontal layout */
-    flex-grow: 1; /* Allow to take available space */
+    display: flex;
+    flex-grow: 1;
+}
+
+.search-bar {
+    background-color: #fff;
+    color: #333;
+    padding: 4px 12px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    transition: border-color 0.3s;
+    width: 20vw;
+}
+
+.search-bar::placeholder {
+    color: #aaa; /* Light gray for placeholder text */
 }
