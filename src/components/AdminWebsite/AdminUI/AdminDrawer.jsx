@@ -60,7 +60,6 @@ const NAV_ITEMS = [
         segment: 'users', title: 'Users Management', icon: <PersonRoundedIcon />,
         children: [
             { segment: 'users', title: 'Users List', icon: <ListIcon /> },
-            { segment: 'users/add', title: 'Add Users', icon: <AddCircleIcon /> },
             { segment: 'users/pending', title: 'Pending Users', icon: <CategoryIcon /> },
         ],
     },
