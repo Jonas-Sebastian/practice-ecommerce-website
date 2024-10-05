@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, TextField, Button, Typography, IconButton } from '@mui/material';
+import { Box, TextField, Button, Typography, IconButton, Checkbox, FormControlLabel } from '@mui/material';
 import ZoomInMapRounded from '@mui/icons-material/ZoomInMapRounded';
 import ZoomOutMapRounded from '@mui/icons-material/ZoomOutMapRounded';
 import productServiceInstance from '../../../services/ProductService';
@@ -14,7 +14,8 @@ export default function AdminProductEdit() {
         price: '',
         stock: '',
         image: '',
-        description: ''
+        description: '',
+        available: false,
     });
     const [imageFile, setImageFile] = useState(null);
     const [previewImage, setPreviewImage] = useState('');
@@ -44,6 +45,13 @@ export default function AdminProductEdit() {
         }));
     };
 
+    const handleCheckboxChange = (e) => {
+        setProduct((prevProduct) => ({
+            ...prevProduct,
+            available: e.target.checked
+        }));
+    };
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setImageFile(file);
@@ -62,6 +70,7 @@ export default function AdminProductEdit() {
         formData.append('price', product.price);
         formData.append('stock', product.stock);
         formData.append('description', product.description);
+        formData.append('available', product.available);
         if (imageFile) {
             formData.append('image', imageFile);
         }
@@ -184,6 +193,16 @@ export default function AdminProductEdit() {
                     fullWidth
                     margin="normal"
                     sx={{ maxWidth: '25vw' }}
+                />
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={product.available}
+                            onChange={handleCheckboxChange}
+                            color="primary"
+                        />
+                    }
+                    label="Available"
                 />
                 <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, maxWidth: '10vw' }}>
                     Save Changes
