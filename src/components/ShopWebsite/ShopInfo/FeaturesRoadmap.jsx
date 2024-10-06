@@ -89,6 +89,7 @@ const FeaturesRoadmap = () => {
         backendChanges: [
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other backend features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
             { title: 'Update Orders Backend', isDone: true, details: 'Update Orders Backend model to handle more order details.', date: 'October 2, 2024', },
+            { title: 'Update Category, Order, Product Display IDs', isDone: true, details: 'Update models to use and show Display IDs instead of Django built in IDs.', date: 'October 6, 2024', },
         ],
 
         // Never Implement
@@ -98,7 +99,7 @@ const FeaturesRoadmap = () => {
         ],
     };
 
-    const lastUpdatedDate = "Last updated: October 3, 2024";
+    const lastUpdatedDate = "Last updated: October 6, 2024";
 
     return (
         <Box sx={{ p: 3, width: '70%', mx: 'auto' }}>
