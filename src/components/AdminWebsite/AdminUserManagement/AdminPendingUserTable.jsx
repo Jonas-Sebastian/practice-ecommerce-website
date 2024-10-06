@@ -60,14 +60,12 @@ export default function AdminPendingUserTable({ pendingUsers, setPendingUsers, o
     
 
     const columns = [
-        { id: 'id', label: 'ID', sortable: true, sx: { width: '5%' } },
         { id: 'username', label: 'Name', sortable: true, sx: { width: '30%' } },
         { id: 'email', label: 'Email', sortable: true, sx: { width: '35%' } },
         { id: 'actions', label: 'Actions', sortable: false, sx: { width: '30%', textAlign: 'center' } },
     ];
 
     const data = sortedUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(user => ({
-        id: user.id,
         username: user.username,
         email: user.email,
         actions: (
