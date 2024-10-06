@@ -1,3 +1,4 @@
+/* Navigation Link Styles */
 .nav-link {
     position: relative;
     text-decoration: none;
@@ -12,98 +13,12 @@
     transition: width 0.3s ease-in;
 }
 
-/* XS (Extra Small) breakpoint : For the smallest phone screens */
-@media (min-height: 0px) {
-    .nav-link::after {
-        height: 0.4vh;
-        bottom: 0.3vh;
-    }
-    .nav-link Button {
-        min-width: 100px;
-        height: 7vh;
-    }
-    .toolbar {
-        height: 7vh;
-        overflow-x: auto; /* Enable horizontal scrolling */
-        white-space: nowrap; /* Prevent wrapping */
-    }
-}
-
-/* SM (Small) breakpoint : For phones*/
-@media (min-width: 360px) and (min-height: 800px) {
-    .nav-link::after {
-        height: 0.5vh;
-        bottom: 0.5vh;
-    }
-    .nav-link Button {
-        width: 20vw; 
-        height: 6vh;
-    }
-    .toolbar {
-        height: 6vh;
-        overflow-x: auto; /* Enable horizontal scrolling */
-        white-space: nowrap; /* Prevent wrapping */
-    }
-}
-
-/* MD (Medium) breakpoint : For Tablets*/
-@media (min-width: 768px) and (min-height: 1024px) {
-    .nav-link::after {
-        height: 0.4vh;
-        bottom: 0.5vh;
-    }
-    .nav-link Button {
-        width: 20vw; 
-        height: 5vh;
-    }
-    .toolbar {
-        height: 5vh;
-        overflow-x: auto; /* Enable horizontal scrolling */
-        white-space: nowrap; /* Prevent wrapping */
-        /* Hide scrollbar */
-        -ms-overflow-style: none;  /* Internet Explorer and Edge */
-        scrollbar-width: none;  /* Firefox */
-    }
-    .toolbar::-webkit-scrollbar {
-        display: none;  /* Safari and Chrome */
-    }
-}
-
-/* LG (Large) breakpoint : For 1366x768 or 1280x720 monitors */
-@media (min-width: 1280px) and (min-height: 720px) {
-    .nav-link::after {
-        height: 0.5vh;
-        bottom: 0.75vh;
-    }
-    .nav-link Button {
-        width: 2.5vw; 
-        height: 8vh;
-    }
-    .toolbar {
-        height: 8vh;
-    }
-}
-
-/* XL (Extra Large) breakpoint : For 1920x1080p and above */
-@media (min-width: 1920px) and (min-height: 1080px) {
-    .nav-link::after {
-        height: 0.25vh;
-        bottom: 0.5vh;
-    }
-    .nav-link Button {
-        width: 2.5vw;
-        height: 5vh;
-    }
-    .toolbar {
-        height: 5vh;
-    }
-}
-
 /* Active state */
 .nav-link.active::after {
     width: 100%; /* Expand the underline when active */
 }
 
+/* Navigation Button Styles */
 .nav-link Button {
     display: flex;
     align-items: center; 
@@ -118,11 +33,13 @@
     border-radius: 0;
 }
 
+/* Navigation Links Container */
 .nav-links {
     display: flex;
     flex-grow: 1;
 }
 
+/* Search Bar Styles */
 .search-bar {
     background-color: #fff;
     color: #333;
@@ -130,9 +47,115 @@
     border: 1px solid #ccc;
     border-radius: 16px;
     transition: border-color 0.3s;
-    width: 20vw;
+    width: 20vw; /* Initial width */
+    position: relative; /* Ensure dropdown is visible */
+    overflow: visible; /* To show the search suggestions */
 }
 
 .search-bar::placeholder {
     color: #aaa; /* Light gray for placeholder text */
+}
+
+/* Search Suggestions Styles */
+.search-suggestions {
+    position: absolute;
+    top: calc(100% + 5px); /* Ensure it's directly below the search input */
+    left: 0;
+    right: 0;
+    background: white; /* Keep this for clarity */
+    color: black;
+    z-index: 10; /* Make sure it's above everything else */
+    border: 1px solid #ccc; /* Optional: for clarity */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: depth */
+    width: 100%; /* Match the width of the search input */
+    max-height: 300px; /* Optional: to limit height */
+    overflow-y: auto; /* Enable scrolling if too many items */
+}
+
+.search-suggestions .MuiListItem-root {
+    padding: 8px 16px; /* Better padding */
+}
+
+/* Toolbar Styles */
+.toolbar {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: visible; /* To show the search suggestions */
+}
+
+/* Breakpoints */
+@media (min-height: 0px) { /* XS (Extra Small) */
+    .nav-link::after {
+        height: 0.4vh;
+        bottom: 0.3vh;
+    }
+    .nav-link Button {
+        min-width: 100px;
+        height: 7vh;
+    }
+    .toolbar {
+        height: 7vh;
+    }
+}
+
+@media (min-width: 360px) and (min-height: 800px) { /* SM (Small) */
+    .nav-link::after {
+        height: 0.5vh;
+        bottom: 0.5vh;
+    }
+    .nav-link Button {
+        width: 20vw; 
+        height: 6vh;
+    }
+    .toolbar {
+        height: 6vh;
+    }
+}
+
+@media (min-width: 768px) and (min-height: 1024px) { /* MD (Medium) */
+    .nav-link::after {
+        height: 0.4vh;
+        bottom: 0.5vh;
+    }
+    .nav-link Button {
+        width: 20vw; 
+        height: 5vh;
+    }
+    .toolbar {
+        height: 5vh;
+        /* Hide scrollbar */
+        -ms-overflow-style: none;  /* Internet Explorer and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .toolbar::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+    }
+}
+
+@media (min-width: 1280px) and (min-height: 720px) { /* LG (Large) */
+    .nav-link::after {
+        height: 0.5vh;
+        bottom: 0.75vh;
+    }
+    .nav-link Button {
+        width: 2.5vw; 
+        height: 8vh;
+    }
+    .toolbar {
+        height: 8vh;
+    }
+}
+
+@media (min-width: 1920px) and (min-height: 1080px) { /* XL (Extra Large) */
+    .nav-link::after {
+        height: 0.25vh;
+        bottom: 0.5vh;
+    }
+    .nav-link Button {
+        width: 2.5vw;
+        height: 5vh;
+    }
+    .toolbar {
+        height: 5vh;
+    }
 }
