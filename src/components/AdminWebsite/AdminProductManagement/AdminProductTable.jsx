@@ -44,7 +44,7 @@ export default function AdminProductTable({ products, onEditProduct, onDeletePro
     };
 
     const columns = [
-        { id: 'id', label: 'ID', sortable: true, sx: { width: '3%' } },
+        { id: 'display_id', label: 'ID', sortable: true, sx: { width: '3%' } },
         { id: 'image', label: 'Image', sortable: false, sx: { width: '12%' } },
         { id: 'name', label: 'Name', sortable: true, sx: { width: '15%' } },
         { id: 'category', label: 'Category', sortable: true, sx: { width: '10%' } },
@@ -55,7 +55,7 @@ export default function AdminProductTable({ products, onEditProduct, onDeletePro
     ];
 
     const data = sortedProducts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(product => ({
-        id: product.id,
+        display_id: product.display_id,
         image: (
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <img
