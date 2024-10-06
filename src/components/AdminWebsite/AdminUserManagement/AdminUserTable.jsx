@@ -46,7 +46,7 @@ export default function AdminUserTable({ users, setUsers, onDeleteUser }) {
     };
 
     const columns = [
-        { id: 'id', label: 'ID', sortable: true, sx: { width: '5%' } },
+        { id: 'display_id', label: 'ID', sortable: true, sx: { width: '5%' } },
         { id: 'username', label: 'Name', sortable: true, sx: { width: '30%' } },
         { id: 'email', label: 'Email', sortable: true, sx: { width: '35%' } },
         { id: 'is_staff', label: 'Staff', sortable: false, sx: { width: '10%', textAlign: 'center' } },
@@ -55,7 +55,7 @@ export default function AdminUserTable({ users, setUsers, onDeleteUser }) {
     ];
 
     const data = sortedUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(user => ({
-        id: user.id,
+        display_id: user.display_id,
         username: user.username,
         email: user.email,
         is_staff: (
