@@ -12,18 +12,16 @@ export default function ProductCard({ product, onAddToCart }) {
             hover:shadow-lg 
             transition-shadow 
             duration-300 
-            max-w-xs 
-            sm:max-w-sm 
-            md:max-w-md 
-            lg:max-w-lg 
-            xl:max-w-xl 
-            mx-auto
+            flex 
+            flex-col 
+            h-full 
+            max-w-xs
         ">
-            <div className="w-full h-64 flex items-center justify-center mb-4 bg-gray-100 rounded-md">
+            <div className="w-full h-64 flex items-center justify-center mb-4 bg-gray-100 rounded-md overflow-hidden">
                 <img
                     src={product.image}
                     alt={product.name}
-                    className="max-w-full max-h-full object-contain"
+                    className="w-full h-full object-contain"
                 />
             </div>  
             <h2 className="text-xl font-semibold mb-2 text-center">{product.name}</h2>
@@ -32,11 +30,13 @@ export default function ProductCard({ product, onAddToCart }) {
             <div className="flex flex-col items-center space-y-2">
                 <button
                     onClick={() => onAddToCart(product)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition flex items-center gap-2 w-9/12"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition w-9/12"
                     disabled={product.stock <= 0}
                 >
-                    <FaShoppingCart className="text-white" />
-                    {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+                    <div className="flex items-center justify-center gap-2">
+                        <FaShoppingCart className="text-white" />
+                        <span className="text-center">{product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}</span>
+                    </div>
                 </button>
                 <Link
                     to={`/products/${product.id}`}
