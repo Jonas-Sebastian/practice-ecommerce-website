@@ -13,7 +13,7 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
 
     // Columns for the main order table
     const orderTableColumns = [
-        { id: 'id', label: 'Order ID', align: 'left', sortable: true },
+        { id: 'display_id', label: 'Order ID', align: 'left', sortable: true },
         { id: 'customer_name', label: 'Customer Name', align: 'left', sortable: true },
         { id: 'status', label: 'Status', align: 'left', sortable: true },
         { id: 'created_at', label: 'Created At', align: 'left', sortable: true },
@@ -73,7 +73,7 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
     };
 
     const currentPageOrders = orders.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(order => ({
-        id: order.id,
+        display_id: order.display_id,
         customer_name: order.customer_name,
         status: (
             <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
