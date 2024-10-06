@@ -60,6 +60,12 @@
         height: 5vh;
         overflow-x: auto; /* Enable horizontal scrolling */
         white-space: nowrap; /* Prevent wrapping */
+        /* Hide scrollbar */
+        -ms-overflow-style: none;  /* Internet Explorer and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .toolbar::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
     }
 }
 
