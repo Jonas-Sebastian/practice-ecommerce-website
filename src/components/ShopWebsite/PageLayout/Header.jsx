@@ -9,6 +9,7 @@ import './Header.css';
 export default function Header() {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [isFocused, setIsFocused] = useState(false); // New state for focus
     const navigate = useNavigate();
 
     const handleSearchChange = async (event) => {
@@ -18,7 +19,7 @@ export default function Header() {
         if (query.length > 2) {
             try {
                 const response = await productServiceInstance.searchProducts(query);
-                setSearchResults(response.data); // Set results from API
+                setSearchResults(response.data);
             } catch (error) {
                 console.error("Search error:", error);
             }
@@ -29,13 +30,13 @@ export default function Header() {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter' && searchQuery) {
-            navigate(`/products?search=${searchQuery}`); // Redirect to filtered product page
+            navigate(`/shop?search=${searchQuery}`);
         }
     };
 
     const handleResultClick = (productId) => {
-        navigate(`/products/${productId}`); // Navigate to product details
-        setSearchResults([]); // Clear suggestions
+        navigate(`/products/${productId}`);
+        setSearchResults([]);
     };
 
     return (
@@ -64,9 +65,11 @@ export default function Header() {
                             value={searchQuery}
                             onChange={handleSearchChange}
                             onKeyDown={handleKeyDown}
+                            onFocus={() => setIsFocused(true)} // Set focused to true
+                            onBlur={() => setIsFocused(false)} // Set focused to false
                             style={{ paddingLeft: '40px' }}
                         />
-                        {searchResults.length > 0 && (
+                        {isFocused && searchResults.length > 0 && (
                             <div className="search-suggestions">
                                 {searchResults.map((product) => (
                                     <div 
@@ -105,7 +108,7 @@ export default function Header() {
                             <Button className="nav-button" color="inherit">About</Button>
                         </NavLink>
                         <NavLink to="/roadmap" className="nav-link">
-                            <Button className="nav-button" color="inherit" style={{ lineHeight: 1.3  }}>Features Roadmap</Button>
+                            <Button className="nav-button" color="inherit" style={{ lineHeight: 1.3 }}>Features Roadmap</Button>
                         </NavLink>
                     </div>
                     <Link to="/cart">
