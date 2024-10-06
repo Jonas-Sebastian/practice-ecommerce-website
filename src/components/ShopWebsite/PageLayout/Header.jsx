@@ -22,7 +22,7 @@ export default function Header() {
                             MyShop
                         </Link>
                     </Typography>
-                    <div className="search-bar-container" style={{ position: 'relative' }}>
+                    <div className="search-bar-container" style={{ position: 'relative', marginRight: '2vw' }}>
                         <SearchIcon 
                             style={{ 
                                 position: 'absolute', 
