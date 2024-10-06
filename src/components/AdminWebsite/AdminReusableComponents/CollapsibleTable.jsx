@@ -39,20 +39,23 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
 
   const sortedData = React.useMemo(() => {
     return [...data].sort((a, b) => {
-      const aValue = a[orderBy]?.toString() || "";
-      const bValue = b[orderBy]?.toString() || "";
-
-      // For string values
-      if (typeof aValue === 'string' && typeof bValue === 'string') {
-        return order === 'asc'
-          ? aValue.localeCompare(bValue, undefined, { sensitivity: 'base' })
-          : bValue.localeCompare(aValue, undefined, { sensitivity: 'base' });
-      }
-
+      const aValue = a[orderBy];
+      const bValue = b[orderBy];
+  
+      // Determine if the values are numeric
+      const isNumeric = (value) => !isNaN(value) && value !== null && value !== undefined;
+  
       // For numeric values
-      return order === 'asc' ? (aValue - bValue) : (bValue - aValue);
+      if (isNumeric(aValue) && isNumeric(bValue)) {
+        return order === 'asc' ? Number(aValue) - Number(bValue) : Number(bValue) - Number(aValue);
+      }
+  
+      // For string values
+      return order === 'asc'
+        ? aValue?.localeCompare(bValue, undefined, { sensitivity: 'base' }) || 0
+        : bValue?.localeCompare(aValue, undefined, { sensitivity: 'base' }) || 0;
     });
-  }, [data, order, orderBy]);
+  }, [data, order, orderBy]);  
 
   const Row = ({ row }) => {
     const [open, setOpen] = React.useState(false);
