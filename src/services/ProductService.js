@@ -21,6 +21,16 @@ class ProductService {
   deleteProduct(id) {
     return axios.delete(`${API_URL_PRODUCTS}${id}/`);
   }
+
+  searchProducts(query, categoryId = null) {
+    let url = `${API_URL_PRODUCTS}search/?q=${query}`;
+    
+    if (categoryId) {
+      url += `&category=${categoryId}`;
+    }
+    
+    return axios.get(url);
+  }
 }
 
 const productServiceInstance = new ProductService();
