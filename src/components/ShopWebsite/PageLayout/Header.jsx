@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Container, InputBase } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/SearchRounded';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import productServiceInstance from '../../../services/ProductService';
+import SearchSuggestions from './SearchSuggestions';
 import './Header.css';
 
 export default function Header() {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [isFocused, setIsFocused] = useState(false); // New state for focus
+    const [isFocused, setIsFocused] = useState(false);
     const navigate = useNavigate();
+    const searchBarRef = useRef(null);
 
     const handleSearchChange = async (event) => {
         const query = event.target.value;
@@ -24,7 +26,7 @@ export default function Header() {
                 console.error("Search error:", error);
             }
         } else {
-            setSearchResults([]); // Clear search results when query is short
+            setSearchResults([]);
         }
     };
 
@@ -60,42 +62,16 @@ export default function Header() {
                             }} 
                         />
                         <InputBase
+                            ref={searchBarRef}
                             className="search-bar"
                             placeholder="Search…"
                             value={searchQuery}
                             onChange={handleSearchChange}
                             onKeyDown={handleKeyDown}
-                            onFocus={() => setIsFocused(true)} // Set focused to true
-                            onBlur={() => setIsFocused(false)} // Set focused to false
-                            style={{ paddingLeft: '40px' }}
+                            onFocus={() => {setIsFocused(true);}}
+                            onBlur={() => setIsFocused(false)}
+                            style={{ paddingLeft: '40px', width: '20vw' }} 
                         />
-                        {isFocused && searchResults.length > 0 && (
-                            <div className="search-suggestions">
-                                {searchResults.map((product) => (
-                                    <div 
-                                        key={product.id} 
-                                        onMouseDown={() => handleResultClick(product.id)} 
-                                        style={{ 
-                                            display: 'flex', 
-                                            alignItems: 'center', 
-                                            padding: '8px 16px', 
-                                            cursor: 'pointer', 
-                                            borderBottom: '1px solid #ddd' 
-                                        }}
-                                    >
-                                        <img 
-                                            src={product.image} 
-                                            alt={product.name} 
-                                            style={{ width: '40px', height: '40px', marginRight: '16px', borderRadius: '4px' }} 
-                                        />
-                                        <div>
-                                            <div style={{ fontWeight: 'bold' }}>{product.name}</div>
-                                            <div style={{ color: '#888' }}>${product.price}</div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
                     </div>
                     <div className="nav-links" style={{ display: 'flex', justifyContent: 'flex-end' }}>
                         <NavLink to="/shop" className="nav-link">
@@ -117,6 +93,12 @@ export default function Header() {
                         </IconButton>
                     </Link>
                 </Toolbar>
+                <SearchSuggestions
+                    suggestions={searchResults}
+                    onSuggestionClick={handleResultClick}
+                    isFocused={isFocused}
+                    searchBarRef={searchBarRef}
+                />
             </Container>
         </AppBar>
     );
