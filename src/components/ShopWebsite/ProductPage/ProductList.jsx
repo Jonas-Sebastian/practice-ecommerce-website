@@ -65,19 +65,21 @@ export default function ProductList() {
                 </div>
 
                 {/* Product Cards Box */}
-                <div className={`bg-gray-100 p-4 ${showFilters ? 'w-full xl:w-5/6 lg:w-3/4': 'w-full'}`}>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                        {filteredProducts.length > 0 ? (
-                            filteredProducts.map(product => (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    onAddToCart={addToCart}
-                                />
-                            ))
-                        ) : (
-                            <p>No products found.</p>
-                        )}
+                <div className={`bg-gray-100 p-4 ${showFilters ? 'w-full xl:w-5/6 lg:w-3/4' : 'w-full'}`}>
+                    <div className="flex justify-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                            {filteredProducts.length > 0 ? (
+                                filteredProducts.map(product => (
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        onAddToCart={addToCart}
+                                    />
+                                ))
+                            ) : (
+                                <p>No products found.</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
