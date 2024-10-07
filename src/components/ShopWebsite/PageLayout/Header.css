@@ -53,23 +53,19 @@
 }
 
 .search-bar::placeholder {
-    color: #aaa; /* Light gray for placeholder text */
+    color: #aaa; 
 }
 
 /* Search Suggestions Styles */
 .search-suggestions {
     position: absolute;
-    top: calc(100% + 5px); /* Ensure it's directly below the search input */
-    left: 0;
-    right: 0;
-    background: white; /* Keep this for clarity */
+    background: white;
     color: black;
-    z-index: 10; /* Make sure it's above everything else */
-    border: 1px solid #ccc; /* Optional: for clarity */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: depth */
-    width: 100%; /* Match the width of the search input */
-    max-height: 300px; /* Optional: to limit height */
-    overflow-y: auto; /* Enable scrolling if too many items */
+    border: 1px solid #ccc; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto; 
+    z-index: 100;
 }
 
 .search-suggestions .MuiListItem-root {
@@ -80,7 +76,6 @@
 .toolbar {
     overflow-x: auto; /* Enable horizontal scrolling */
     white-space: nowrap; /* Prevent wrapping */
-    overflow: visible; /* To show the search suggestions */
 }
 
 /* Breakpoints */
@@ -96,6 +91,9 @@
     .toolbar {
         height: 7vh;
     }
+    .search-suggestions {
+        width: 100vw;
+    }
 }
 
 @media (min-width: 360px) and (min-height: 800px) { /* SM (Small) */
@@ -109,6 +107,9 @@
     }
     .toolbar {
         height: 6vh;
+    }
+    .search-suggestions {
+        width: 100vw;
     }
 }
 
@@ -130,6 +131,9 @@
     .toolbar::-webkit-scrollbar {
         display: none;  /* Safari and Chrome */
     }
+    .search-suggestions {
+        width: 50vw;
+    }
 }
 
 @media (min-width: 1280px) and (min-height: 720px) { /* LG (Large) */
@@ -144,6 +148,9 @@
     .toolbar {
         height: 8vh;
     }
+    .search-suggestions {
+        width: 40vw;
+    }
 }
 
 @media (min-width: 1920px) and (min-height: 1080px) { /* XL (Extra Large) */
@@ -157,5 +164,8 @@
     }
     .toolbar {
         height: 5vh;
+    }
+    .search-suggestions {
+        width: 25vw;
     }
 }
