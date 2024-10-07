@@ -5,7 +5,9 @@ import { FaShoppingCart } from 'react-icons/fa';
 export default function ProductCard({ product, onAddToCart }) {
     return (
         <div className="
-            border 
+            bg-white
+            hover:bg-gray-300 
+            text-black
             p-4 
             rounded-lg 
             shadow-md 
@@ -17,7 +19,7 @@ export default function ProductCard({ product, onAddToCart }) {
             h-full 
             max-w-xs
         ">
-            <div className="w-full h-64 flex items-center justify-center mb-4 bg-gray-100 rounded-md overflow-hidden">
+            <div className="w-full h-64 flex items-center justify-center mb-4 rounded-md overflow-hidden">
                 <img
                     src={product.image}
                     alt={product.name}
