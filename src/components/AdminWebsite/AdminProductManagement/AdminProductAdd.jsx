@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, TextField, Button, Typography, IconButton, MenuItem } from '@mui/material';
+import { Box, TextField, Button, Typography, IconButton, MenuItem, FormControlLabel, Checkbox } from '@mui/material';
 import ZoomInMapRounded from '@mui/icons-material/ZoomInMapRounded';
 import ZoomOutMapRounded from '@mui/icons-material/ZoomOutMapRounded';
 import productServiceInstance from '../../../services/ProductService';
@@ -13,7 +13,8 @@ export default function AdminProductAdd() {
         category: '',
         price: '',
         stock: '',
-        description: ''
+        description: '',
+        available: true
     });
     const [imageFile, setImageFile] = useState(null);
     const [previewImage, setPreviewImage] = useState('');
@@ -46,10 +47,10 @@ export default function AdminProductAdd() {
     }, []);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setProduct((prevProduct) => ({
             ...prevProduct,
-            [name]: value
+            [name]: type === 'checkbox' ? checked : value
         }));
         if (name === 'name') {
             setNameError(false); // Reset error when typing
@@ -80,6 +81,7 @@ export default function AdminProductAdd() {
         formData.append('price', product.price);
         formData.append('stock', product.stock);
         formData.append('description', product.description);
+        formData.append('available', product.available);
         if (imageFile) {
             formData.append('image', imageFile);
         }
@@ -104,8 +106,8 @@ export default function AdminProductAdd() {
                     onChange={handleChange}
                     fullWidth
                     margin="normal"
-                    error={nameError} // Set error prop here
-                    helperText={nameError ? 'This product name is already taken.' : ''} // Optional helper text
+                    error={nameError}
+                    helperText={nameError ? 'This product name is already taken.' : ''}
                     sx={{ maxWidth: '25vw' }}
                 />
                 <TextField
@@ -188,6 +190,16 @@ export default function AdminProductAdd() {
                     fullWidth
                     margin="normal"
                     sx={{ maxWidth: '25vw' }}
+                />
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            name="available"
+                            checked={product.available}
+                            onChange={handleChange}
+                        />
+                    }
+                    label="Available"
                 />
                 <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, maxWidth: '10vw' }}>
                     Add Product
