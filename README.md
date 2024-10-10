@@ -8,7 +8,7 @@ If you prefer to explore the portfolio without installing anything, you can acce
 - **Frontend Shop:** [View Frontend Live](https://jonas-sebastian-shop.vercel.app/)
 - **Frontend Admin Management:** [View Admin Panel](https://jonas-sebastian-shop.vercel.app/admin)
 
-**Note:** It may take a moment for the backend data to load due to hosting limitations on Render.
+**Note:** It may take a minute for the backend data to load due to hosting limitations on Render.
 
 ### Testing Credentials
 For the Admin Management panel, you can use the following credentials:
@@ -19,7 +19,7 @@ For the Admin Management panel, you can use the following credentials:
 If you prefer to explore the portfolio without installing anything, you can access the live version here:
 - **Backend Django Admin:** [View Django Admin](https://practice-ecommerce-website-backend.onrender.com/admin)
 
-**Note:** It may take a moment for the backend data to load due to hosting limitations on Render.
+**Note:** It may take a minute for the backend data to load due to hosting limitations on Render.
 
 ### Testing Credentials
 For the Admin Management panel, you can use the following credentials:

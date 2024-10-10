@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Header from './components/ShopWebsite/PageLayout/Header';
@@ -30,6 +30,7 @@ import HomePage from './components/ShopWebsite/HomePage/HomePage';
 import BackToTopButton from './components/ShopWebsite/PageLayout/BackToTop';
 import Checkout from './components/ShopWebsite/CartPage/Checkout';
 import 'react-toastify/dist/ReactToastify.css';
+import DataLoadingMessage from './components/ShopWebsite/ShopInfo/DataLoadingMessage';
 
 export default function App() {
     return (
@@ -70,10 +71,17 @@ export default function App() {
 }
 
 const CartProviderWrapper = () => {
+    const [open, setOpen] = useState(true);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <CartProvider>
             <Header />
             <Outlet />
+            <DataLoadingMessage open={open} handleClose={handleClose} />
             <Footer />
             <ToastContainer autoClose={1250} />
             <BackToTopButton />
