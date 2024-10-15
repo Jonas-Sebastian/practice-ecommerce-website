@@ -52,6 +52,7 @@ const FeaturesRoadmap = () => {
             { title: 'Pre-Roadmap Features', isDone: true, details: 'All other frontend shop features completed prior to the creation features roadmap page.', date: 'September 27, 2024', isPreRoadmap: true },
             { title: 'Create Features Roadmap Page', isDone: true, details: 'A page to show all the finished features.', date: 'September 28, 2024' },
             { title: 'Create Place Order functionality', isDone: true, details: 'Customer Order details gets properly sent and saved to the database.', date: 'October 1, 2024', },
+            { title: 'Add Featured Products Carousel in Home Page', isDone: true, details: 'Shows the best selling products based on the number of items sold. Arranged from most to least sold. Max 10 items', date: 'October 16, 2024', },
             { title: 'Search and Filter Products', isDone: false, details: 'A basic search and filter functionality to help customers easily find products.' },
             { title: 'Improve UI', isDone: false, details: 'Improve the UI design.' },
         ],
@@ -100,7 +101,7 @@ const FeaturesRoadmap = () => {
         ],
     };
 
-    const lastUpdatedDate = "Last updated: October 9, 2024";
+    const lastUpdatedDate = "Last updated: October 16, 2024";
 
     return (
         <Box sx={{ p: 3, width: '70%', mx: 'auto' }}>
