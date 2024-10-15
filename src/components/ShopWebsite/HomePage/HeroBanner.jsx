@@ -23,7 +23,7 @@ const HeroBanner = () => {
   return (
     <Box
       sx={{
-        height: '100vh',  // Change once there's more content to add in the Home Page
+        height: '70vh',  // Change once there's more content to add in the Home Page
         width: '100%',  
         backgroundImage: `url(${bannerImage})`,
         backgroundSize: 'cover',
