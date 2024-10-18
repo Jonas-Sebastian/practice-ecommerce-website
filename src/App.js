@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Header from './components/ShopWebsite/PageLayout/Header';
-import ProductList from './components/ShopWebsite/ProductPage/ProductList';
+import ProductPage from './components/ShopWebsite/ProductPage/ProductPage';
 import ProductDetails from './components/ShopWebsite/ProductPage/ProductDetails';
 import Footer from './components/ShopWebsite/PageLayout/Footer';
 import Cart from './components/ShopWebsite/CartPage/Cart';
@@ -42,7 +42,7 @@ export default function App() {
                     <Route path="/products/:id" element={<ProductDetails />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/shop" element={<ProductList />} />
+                    <Route path="/shop" element={<ProductPage />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/roadmap" element={<FeaturesRoadmap />} />
