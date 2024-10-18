@@ -17,7 +17,7 @@ export default function ProductPage() {
                     {showFilters ? 'Hide Filters' : 'Show Filters'}
                 </button>
 
-                <div className={`bg-gray-100 p-4 ${showFilters ? '' : 'hidden'} sm:block xl:w-1/6 lg:w-1/4 w-full mr-4 mb-4 md:mb-0`}>
+                <div className={`bg-gray-100 p-4 ${showFilters ? '' : 'hidden'} sm:block xl:w-1/6 lg:w-1/4 md:w-1/3 w-full mr-4 mb-4 md:mb-0`}>
                     <h2 className="text-xl font-semibold mb-4">Filters</h2>
                     <ProductFilter />
                 </div>
