@@ -36,7 +36,7 @@ export default function DataLoadingMessage({ open, handleClose }) {
                 </Box>
                 <Typography variant="body1" style={{ marginTop: '10px' }}>
                     The white background indicates data is still loading.<br /><br />
-                    It may take a minute for the backend data to load due to hosting limitations on Render.
+                    It may take a minute for the backend data to load due to hosting limitations on Render or Supabase.
                 </Typography>
                 <Typography variant="body2" style={{ marginTop: '10px', color: '#666' }}>
                     Click anywhere to dismiss this message.
