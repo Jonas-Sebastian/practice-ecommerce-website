@@ -1,0 +1,14 @@
+@media (min-width: 768px) and (max-width: 1366px) {
+    .grid-cols-custom {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .custom-product-page-width {
+        width: 90vw;
+    }
+    .custom-filter-width {
+        width: 25vw;
+    }
+    .custom-category-text-font-size {
+        font-size: 1rem;
+    }
+}
