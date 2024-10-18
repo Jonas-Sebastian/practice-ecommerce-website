@@ -89,7 +89,7 @@ export default function FeaturedProductsCarousel() {
         afterChange: () => setIsDragging(false),
         responsive: [
             { // Smaller/Old Monitors
-                breakpoint: 1366,
+                breakpoint: 1600,
                 settings: {
                 slidesToShow: 4,
                 slidesToScroll: 1,
