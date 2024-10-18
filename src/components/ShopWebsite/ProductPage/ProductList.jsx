@@ -4,12 +4,18 @@ import ProductCard from './ProductCard';
 import { useCart } from '../Context/CartContext';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-export default function ProductList() {
+const ITEMS_PER_PAGE = 20;
+
+export default function ProductList({ selectedCategories }) {
     const { handleAddToCart } = useCart();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [showFilters, setShowFilters] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [jumpToPage, setJumpToPage] = useState('');
     const location = useLocation();
 
     useEffect(() => {
@@ -17,7 +23,7 @@ export default function ProductList() {
             try {
                 const response = await ProductService.getAllProducts();
                 setProducts(response.data);
-                setFilteredProducts(response.data); // Initialize filtered products
+                setFilteredProducts(response.data);
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -28,61 +34,98 @@ export default function ProductList() {
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get('search');
+        let filtered = products;
 
+        // Filter by search query
         if (query) {
             const lowercasedQuery = query.toLowerCase();
-            const filtered = products.filter(product =>
+            filtered = filtered.filter(product =>
                 product.name.toLowerCase().includes(lowercasedQuery)
             );
-            setFilteredProducts(filtered);
-        } else {
-            setFilteredProducts(products); // Reset to all products if no query
         }
-    }, [location.search, products]);
+
+        // Filter by selected categories
+        if (selectedCategories.length > 0) {
+            filtered = filtered.filter(product =>
+                selectedCategories.includes(product.category)
+            );
+        }
+
+        setFilteredProducts(filtered);
+    }, [location.search, products, selectedCategories]);
 
     const addToCart = (product) => {
         handleAddToCart(product);
         toast.success('Product added to cart!');
     };
 
+    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const currentProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    const handleJumpToPage = () => {
+        const pageNum = parseInt(jumpToPage);
+        if (pageNum > 0 && pageNum <= totalPages) {
+            setCurrentPage(pageNum);
+        }
+        setJumpToPage('');
+    };
+
     return (
-        <div className="xl:w-3/4 lg:w-full w-full mx-auto px-4 py-8">
-            <h1 className="text-2xl font-bold mb-6">Products</h1>
-
-            <div className="flex flex-col md:flex-row">
-                {/* Toggle Button for Filter Visibility (Only on mobile) */}
-                <button
-                    onClick={() => setShowFilters(!showFilters)}
-                    className="bg-blue-500 text-white px-4 py-2 mb-4 rounded-md md:hidden"
-                >
-                    {showFilters ? 'Hide Filters' : 'Show Filters'}
-                </button>
-
-                {/* Filter Component Box (Always visible on larger screens) */}
-                <div className={`bg-gray-100 p-4 ${showFilters ? '' : 'hidden'} sm:block xl:w-1/6 lg:w-1/4 w-full mr-4 mb-4 md:mb-0`}>
-                    <h2 className="text-xl font-semibold mb-4">Filters</h2>
-                    {/* Add your filter component here */}
-                </div>
-
-                {/* Product Cards Box */}
-                <div className={`bg-gray-100 p-4 ${showFilters ? 'w-full xl:w-5/6 lg:w-3/4' : 'w-full'}`}>
-                    <div className="flex justify-center">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                            {filteredProducts.length > 0 ? (
-                                filteredProducts.map(product => (
-                                    <ProductCard
-                                        key={product.id}
-                                        product={product}
-                                        onAddToCart={addToCart}
-                                    />
-                                ))
-                            ) : (
-                                <p>No products found.</p>
-                            )}
+        <>
+            {/* Pagination Section */}
+            <div className="flex flex-col lg:flex-row justify-end mb-4">
+                <div className="bg-white p-2 rounded shadow-sm">
+                    <div className="flex items-center flex-col lg:flex-row">
+                        <Pagination
+                            count={totalPages}
+                            page={currentPage}
+                            onChange={(event, value) => setCurrentPage(value)}
+                            variant="outlined"
+                            shape="rounded"
+                            color="primary"
+                            style={{ 
+                                margin: '0 20px',
+                                marginTop: window.innerWidth <= 1024 ? '8px' : '0px',
+                            }}
+                            showFirstButton 
+                            showLastButton
+                            
+                        />
+                        <div className="flex items-center my-2 justify-center lg:justify-start">
+                            <TextField
+                                type="number"
+                                value={jumpToPage}
+                                onChange={(e) => setJumpToPage(e.target.value)}
+                                placeholder="Go to page"
+                                style={{ 
+                                    width: window.innerWidth <= 1024 ? '30vw' : '10vw', 
+                                    marginTop: window.innerWidth <= 1024 ? '8px' : '0px',
+                                    marginLeft: '20px' 
+                                }}
+                            />
+                            <Button onClick={handleJumpToPage} disabled={jumpToPage === ''} style={{ marginTop: window.innerWidth <= 1024 ? '8px' : '0px'}}>
+                                Go
+                            </Button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+    
+            {/* Product Cards Section */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-custom gap-4">
+                {currentProducts.length > 0 ? (
+                    currentProducts.map(product => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            onAddToCart={addToCart}
+                        />
+                    ))
+                ) : (
+                    <p>No products found.</p>
+                )}
+            </div>
+        </>
+    );    
 }
