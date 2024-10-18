@@ -29,11 +29,10 @@ export default function ProductCard({ product, onAddToCart }) {
             <h2 className="text-xl font-semibold mb-2 text-center">{product.name}</h2>
             <p className="text-lg font-bold mb-2 text-center">${parseFloat(product.price).toFixed(2)}</p>
 
-            {/* Adjusted container for buttons */}
             <div className="flex flex-col justify-between mt-auto space-y-2">
                 <button
                     onClick={() => onAddToCart(product)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition w-9/12 mx-auto"
+                    className="bg-blue-500 text-white px-4 py-2 md:px-2 rounded-md hover:bg-blue-600 transition w-9/12 md:w-full mx-auto"
                     disabled={product.stock <= 0}
                 >
                     <div className="flex items-center justify-center gap-2">
@@ -43,7 +42,7 @@ export default function ProductCard({ product, onAddToCart }) {
                 </button>
                 <Link
                     to={`/products/${product.id}`}
-                    className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-100 transition block text-center w-9/12 mx-auto"
+                    className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-100 transition block text-center w-9/12 md:w-full mx-auto"
                 >
                     View Details
                 </Link>
