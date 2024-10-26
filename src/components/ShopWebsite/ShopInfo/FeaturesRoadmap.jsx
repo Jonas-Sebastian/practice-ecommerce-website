@@ -35,7 +35,11 @@ const FeatureItem = ({ title, isDone, details, date, isPreRoadmap }) => {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>{title}</DialogTitle>
                 <DialogContent>
-                    <Typography>{details}</Typography>
+                    <Typography component="div">
+                        {details.split('\n').map((item, index) => (
+                            item.trim() && <div key={index}>{item}</div>
+                        ))}
+                    </Typography>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Close</Button>
@@ -63,23 +67,20 @@ const FeaturesRoadmap = () => {
             { title: 'Orders Viewing Page', isDone: true, details: 'Admin can view orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Orders Status Management', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Admin Pending User Page', isDone: true, details: 'Admin can view and manage the approval of users who register.', date: 'October 3, 2024', },
+            { title: 'Admin Categories Management Page', isDone: true, details: 'Admin can Add, Edit, Delete Categories of products.', date: 'October 27, 2024', },
             { title: 'Orders Details Collapsible Rows', isDone: false, details: 'Admin can see the details of each Order by clicking on the row.', },
             { title: 'Design Editor for Customizing Site Elements', isDone: false, details: 'Admin can change parts of the design of the website. Parts that can be changed are undecided for now except for the Hero Banner.', },
             { title: 'Improve UI', isDone: false, details: 'Improve the UI design.' },
-            { title: 'Sales Reports', isDone: false,
+            {
+                title: 'Sales Reports',
+                isDone: false,
                 details: `
                   - **Total Sales:** Overall revenue generated during a specific period.
-                  
                   - **Number of Orders:** Total count of completed orders.
-                  
                   - **Average Order Value (AOV):** Average amount spent per order, calculated by dividing total sales by the number of orders.
-                  
                   - **Top-Selling Products:** A list of products that generated the highest sales, helping identify popular items.
-                  
                   - **Sales Trends:** Graphs showing sales over time (daily, weekly, or monthly) to identify patterns or peak sales periods.
-                  
                   - **Refunds and Returns:** Data on any refunded or returned items, helping assess customer satisfaction.
-                  
                 `
               },
               { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
@@ -101,7 +102,7 @@ const FeaturesRoadmap = () => {
         ],
     };
 
-    const lastUpdatedDate = "Last updated: October 21, 2024";
+    const lastUpdatedDate = "Last updated: October 27, 2024";
 
     return (
         <Box sx={{ p: 3, width: '70%', mx: 'auto' }}>
