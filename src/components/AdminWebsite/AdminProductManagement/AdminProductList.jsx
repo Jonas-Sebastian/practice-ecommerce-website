@@ -21,7 +21,7 @@ export default function AdminProductList() {
 
     const handleEditProduct = (productId) => {
         console.log('Edit product:', productId);
-        window.location.href = `/admin/products/${productId}`; // Adjust the route as needed
+        window.location.href = `/admin/products/${productId}`;
     };
 
     const handleDeleteProduct = async (productId) => {
