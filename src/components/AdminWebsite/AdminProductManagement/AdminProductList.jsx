@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import AdminProductTable from './AdminProductTable';
 import productServiceInstance from '../../../services/ProductService';
 import categoryServiceInstance from '../../../services/CategoryService';
@@ -45,7 +45,7 @@ export default function AdminProductList() {
 
     return (
         <Box>
-            <Typography variant="h2">Product List</Typography>
+            <h2>Product List</h2>
             <AdminProductTable 
                 products={products} 
                 categories={categories} 
