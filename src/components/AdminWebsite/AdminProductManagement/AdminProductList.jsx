@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import AdminProductTable from './AdminProductTable';
 import productServiceInstance from '../../../services/ProductService';
+import categoryServiceInstance from '../../../services/CategoryService';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminProductList() {
     const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetchProducts();
-    }, []);
+        const fetchData = async () => {
+            try {
+                const [productsResponse, categoriesResponse] = await Promise.all([
+                    productServiceInstance.getAllProducts(),
+                    categoryServiceInstance.getAllCategories(),
+                ]);
+                setProducts(productsResponse.data);
+                setCategories(categoriesResponse.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-    const fetchProducts = async () => {
-        try {
-            const response = await productServiceInstance.getAllProducts();
-            setProducts(response.data);
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        }
-    };
+        fetchData();
+    }, []);
 
     const handleEditProduct = (productId) => {
         console.log('Edit product:', productId);
-        window.location.href = `/admin/products/${productId}`;
+        navigate(`/admin/products/${productId}`);
     };
 
     const handleDeleteProduct = async (productId) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
             try {
                 await productServiceInstance.deleteProduct(productId);
-                fetchProducts(); // Refresh the product list after deletion
+                setProducts((prev) => prev.filter(product => product.id !== productId));
             } catch (error) {
                 console.error('Error deleting product:', error);
             }
@@ -37,8 +45,13 @@ export default function AdminProductList() {
 
     return (
         <Box>
-            <h2>Product List</h2>
-            <AdminProductTable products={products} onEditProduct={handleEditProduct} onDeleteProduct={handleDeleteProduct} />
+            <Typography variant="h2">Product List</Typography>
+            <AdminProductTable 
+                products={products} 
+                categories={categories} 
+                onEditProduct={handleEditProduct} 
+                onDeleteProduct={handleDeleteProduct} 
+            />
         </Box>
     );
 }

@@ -3,7 +3,7 @@ import GenericTable from '../AdminReusableComponents/GenericTable';
 import { Button } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon, ZoomIn as ZoomInIcon, ZoomOut as ZoomOutIcon } from '@mui/icons-material';
 
-export default function AdminProductTable({ products, onEditProduct, onDeleteProduct }) {
+export default function AdminProductTable({ products, categories, onEditProduct, onDeleteProduct }) {
     const [zoomedImages, setZoomedImages] = useState({});
     const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'ascending' });
     const [page, setPage] = useState(0);
@@ -54,6 +54,8 @@ export default function AdminProductTable({ products, onEditProduct, onDeletePro
         { id: 'actions', label: 'Actions', sortable: false, sx: { width: '15%', textAlign: 'center' } },
     ];
 
+    const categoryMap = Object.fromEntries(categories.map(category => [category.id, category.name]));
+
     const data = sortedProducts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(product => ({
         display_id: product.display_id,
         image: (
@@ -73,7 +75,7 @@ export default function AdminProductTable({ products, onEditProduct, onDeletePro
             </div>
         ),
         name: product.name,
-        category: product.category.name,
+        category: categoryMap[product.category] || 'Unknown',
         price: product.price,
         stock: product.stock,
         description: product.description,
