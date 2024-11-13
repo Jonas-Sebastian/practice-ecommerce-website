@@ -38,12 +38,12 @@ export default function ProductPage() {
 
     return (
         <div className="xl:w-3/4 lg:w-full w-full mx-auto py-8 custom-product-page-width">
-            <h1 className="text-2xl font-bold mb-6">Products</h1>
+            <h1 className="text-2xl font-bold mb-2 p-4">Products</h1>
 
             <div className="flex flex-col md:flex-row">
                 <button
                     onClick={() => setShowFilters(prev => !prev)}
-                    className="bg-blue-500 text-white px-4 py-2 mb-4 rounded-md md:hidden"
+                    className="bg-blue-500 text-white px-4 py-2 mb-4 rounded-md md:hidden w-4/5 self-center"
                 >
                     {showFilters ? 'Hide Filters' : 'Show Filters'}
                 </button>
