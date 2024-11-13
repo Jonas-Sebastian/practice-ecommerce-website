@@ -7,6 +7,8 @@ import { useLocation } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import orderService from '../../../services/OrderService';
+import ProductSorting from './ProductSort';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -16,7 +18,32 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [jumpToPage, setJumpToPage] = useState('');
+    const [sortOrder, setSortOrder] = useState('product-id-asc');
+    const [bestSellers, setBestSellers] = useState({});
     const location = useLocation();
+
+    useEffect(() => {
+        const fetchBestSellers = async () => {
+            try {
+                const orders = await orderService.getOrders();
+                const productSales = {};
+
+                orders.forEach(order => {
+                    if (order.order_items) {
+                        order.order_items.forEach(item => {
+                            const { product, quantity } = item;
+                            productSales[product] = (productSales[product] || 0) + quantity;
+                        });
+                    }
+                });
+                setBestSellers(productSales);
+            } catch (error) {
+                console.error('Error fetching best-sellers:', error);
+            }
+        };
+
+        fetchBestSellers();
+    }, []);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -34,7 +61,7 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get('search')?.toLowerCase() || '';
-        
+
         const filtered = products.filter(product => {
             const matchesSearch = product.name.toLowerCase().includes(query);
             const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
@@ -42,8 +69,36 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
             return matchesSearch && matchesCategory && matchesPrice;
         });
 
-        setFilteredProducts(filtered);
-    }, [location.search, products, selectedCategories, filteredMinPrice, filteredMaxPrice]);
+        let sortedProducts = [...filtered];
+
+        switch (sortOrder) {
+            case 'product-id-asc':
+                sortedProducts.sort((a, b) => a.id - b.id);
+                break;
+            case 'product-id-desc':
+                sortedProducts.sort((a, b) => b.id - a.id);
+                break;
+            case 'best-seller':
+                sortedProducts.sort((a, b) => (bestSellers[b.id] || 0) - (bestSellers[a.id] || 0));
+                break;
+            case 'price-asc':
+                sortedProducts.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-desc':
+                sortedProducts.sort((a, b) => b.price - a.price);
+                break;
+            case 'name-asc':
+                sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case 'name-desc':
+                sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+                break;
+            default:
+                break;
+        }
+
+        setFilteredProducts(sortedProducts);
+    }, [location.search, products, selectedCategories, filteredMinPrice, filteredMaxPrice, sortOrder, bestSellers]);
 
     const addToCart = (product) => {
         handleAddToCart(product);
@@ -63,10 +118,18 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
 
     return (
         <>
-            {/* Pagination Section */}
-            <div className="flex flex-col lg:flex-row justify-end mb-4">
+            {/* Pagination and Sorting Section */}
+            <div className="flex flex-col lg:flex-row justify-between mb-4">
+                <div className="flex items-center">
+                    <ProductSorting 
+                        sortOrder={sortOrder} 
+                        setSortOrder={setSortOrder} 
+                    />
+                </div>
+
+                {/* Pagination Controls */}
                 <div className="bg-white p-2 rounded shadow-sm">
-                    <div className="flex items-center flex-col lg:flex-row">
+                    <div className="flex items-center flex-col xl:flex-row">
                         <Pagination
                             count={totalPages}
                             page={currentPage}
@@ -84,7 +147,7 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
                                 value={jumpToPage}
                                 onChange={(e) => setJumpToPage(e.target.value)}
                                 placeholder="Go to page"
-                                style={{ width: window.innerWidth <= 1024 ? '30vw' : '10vw', marginLeft: '20px' }}
+                                style={{ width: window.innerWidth <= 1024 ? '25vw' : '5vw', marginLeft: '20px' }}
                             />
                             <Button onClick={handleJumpToPage} disabled={!jumpToPage} style={{ marginLeft: '10px' }}>
                                 Go
