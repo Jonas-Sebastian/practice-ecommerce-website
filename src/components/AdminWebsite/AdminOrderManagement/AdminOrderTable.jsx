@@ -15,7 +15,7 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
     const orderTableColumns = [
         { id: 'display_id', label: 'Order ID', align: 'left', sortable: true },
         { id: 'customer_name', label: 'Customer Name', align: 'left', sortable: true },
-        { id: 'status', label: 'Status', align: 'left', sortable: true },
+        { id: 'status', label: 'Status', align: 'left', sortable: false },
         { id: 'created_at', label: 'Created At', align: 'left', sortable: true },
         { id: 'total', label: 'Total Amount', align: 'right', sortable: true },
         { id: 'actions', label: 'Actions', align: 'center', sortable: false },
@@ -64,7 +64,7 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
 
             setOrders(prevOrders => 
                 prevOrders.map(order => 
-                    order.id === orderId ? { ...order, status: prevOrders.find(o => o.id === orderId).status } : order
+                    order.id === orderId ? { ...order, status: prevOrders.find(o => o.id === orderId)?.status } : order
                 )
             );
 
@@ -72,7 +72,13 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
         }
     };
 
-    const currentPageOrders = orders.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(order => ({
+    const sortedOrders = React.useMemo(() => {
+        return orders.sort((a, b) => {
+            return a.display_id - b.display_id;
+        });
+    }, [orders]);
+
+    const currentPageOrders = sortedOrders.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(order => ({
         display_id: order.display_id,
         customer_name: order.customer_name,
         status: (

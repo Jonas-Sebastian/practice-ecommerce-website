@@ -27,7 +27,15 @@ const StyledTableCell = styled(TableCell)(({ theme, sortable }) => ({
   color: sortable ? theme.palette.primary.main : 'inherit',
 }));
 
-const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPageChange, onRowsPerPageChange }) => {
+export default function CollapsibleTable({
+  columns,
+  data,
+  totalCount,
+  rowsPerPage,
+  page,
+  onPageChange,
+  onRowsPerPageChange,
+}) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState(columns[0].id);
 
@@ -41,31 +49,32 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
     return [...data].sort((a, b) => {
       const aValue = a[orderBy];
       const bValue = b[orderBy];
-  
-      // Determine if the values are numeric
+
       const isNumeric = (value) => !isNaN(value) && value !== null && value !== undefined;
-  
-      // For numeric values
+
       if (isNumeric(aValue) && isNumeric(bValue)) {
         return order === 'asc' ? Number(aValue) - Number(bValue) : Number(bValue) - Number(aValue);
       }
-  
-      // For string values
+
+      const stringA = String(aValue);
+      const stringB = String(bValue);
+
       return order === 'asc'
-        ? aValue?.localeCompare(bValue, undefined, { sensitivity: 'base' }) || 0
-        : bValue?.localeCompare(aValue, undefined, { sensitivity: 'base' }) || 0;
+        ? stringA.localeCompare(stringB, undefined, { sensitivity: 'base' }) || 0
+        : stringB.localeCompare(stringA, undefined, { sensitivity: 'base' }) || 0;
     });
-  }, [data, order, orderBy]);  
+  }, [data, order, orderBy]);
 
   const Row = ({ row }) => {
     const [open, setOpen] = React.useState(false);
 
     const handleRowClick = (e) => {
-        if (e.target.tagName !== 'SELECT' && e.target.tagName !== 'INPUT') {
-            setOpen(prevOpen => !prevOpen);
-        }
+      // Only toggle on clicking cells, not buttons
+      if (e.target.tagName !== 'BUTTON') {
+        setOpen((prevOpen) => !prevOpen);
+      }
     };
-  
+
     return (
       <React.Fragment>
         <TableRow onClick={handleRowClick}>
@@ -75,7 +84,7 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
             </IconButton>
           </TableCell>
           {columns.map((column) => (
-            <StyledTableCell key={column.id}>
+            <StyledTableCell key={column.id} sortable={column.sortable ? 'true' : 'false'}>
               <Typography variant="body1" sx={{ fontWeight: 500 }}>
                 {row[column.id]}
               </Typography>
@@ -101,7 +110,7 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
             <TableRow>
               <StyledTableCell />
               {columns.map((column) => (
-                <StyledTableCell key={column.id} sortable={column.sortable}>
+                <StyledTableCell key={column.id} sortable={column.sortable ? 'true' : 'false'}>
                   {column.sortable ? (
                     <TableSortLabel
                       active={orderBy === column.id}
@@ -119,7 +128,7 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
           </TableHead>
           <TableBody>
             {sortedData.map((row) => (
-              <Row key={row.id} row={row} />
+              <Row key={row.id || row.display_id} row={row} />
             ))}
           </TableBody>
         </Table>
@@ -135,7 +144,7 @@ const CollapsibleTable = ({ columns, data, totalCount, rowsPerPage, page, onPage
       />
     </Paper>
   );
-};
+}
 
 CollapsibleTable.propTypes = {
   columns: PropTypes.array.isRequired,
@@ -146,5 +155,3 @@ CollapsibleTable.propTypes = {
   onPageChange: PropTypes.func.isRequired,
   onRowsPerPageChange: PropTypes.func.isRequired,
 };
-
-export default CollapsibleTable;
