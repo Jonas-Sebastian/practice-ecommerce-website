@@ -112,6 +112,18 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
                     total: (item.price * item.quantity).toFixed(2),
                 }))} />
         ),
+        actions: (
+            <Box sx={{ display: 'flex', justifyContent: 'left', gap: 1 }}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                startIcon={<DeleteIcon />}
+                onClick={() => onDeleteOrder(order.id, order.display_id)}
+              >
+                Delete
+              </Button>
+            </Box>
+          )
     }));
 
     if (loading) {
@@ -124,18 +136,6 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
                 columns={orderTableColumns}
                 data={currentPageOrders.map(order => ({
                     ...order,
-                    actions: (
-                        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                startIcon={<DeleteIcon />}
-                                onClick={() => onDeleteOrder(order.id)}
-                            >
-                                Delete
-                            </Button>
-                        </Box>
-                    ),
                 }))} 
                 totalCount={orders.length}
                 rowsPerPage={rowsPerPage}
