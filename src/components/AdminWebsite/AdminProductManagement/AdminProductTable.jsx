@@ -92,7 +92,7 @@ export default function AdminProductTable({ products, categories, onEditProduct,
                 </Button>
                 <Button
                     variant="outlined"
-                    color="secondary"
+                    sx={{ color: '#DC143C', borderColor: '#DC143C' }}
                     startIcon={<DeleteIcon />}
                     onClick={() => onDeleteProduct(product.id)}
                 >

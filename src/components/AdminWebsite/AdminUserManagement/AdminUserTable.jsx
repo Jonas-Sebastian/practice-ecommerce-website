@@ -78,7 +78,7 @@ export default function AdminUserTable({ users, setUsers, onDeleteUser }) {
             <div style={{ textAlign: 'center' }}>
                 <Button
                     variant="outlined"
-                    color="secondary"
+                    sx={{ color: '#DC143C', borderColor: '#DC143C' }}
                     startIcon={<DeleteIcon />}
                     onClick={() => onDeleteUser(user.id)}
                 >

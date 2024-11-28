@@ -116,7 +116,7 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
             <Box sx={{ display: 'flex', justifyContent: 'left', gap: 1 }}>
               <Button
                 variant="outlined"
-                color="secondary"
+                sx={{ color: '#DC143C', borderColor: '#DC143C' }}
                 startIcon={<DeleteIcon />}
                 onClick={() => onDeleteOrder(order.id, order.display_id)}
               >
