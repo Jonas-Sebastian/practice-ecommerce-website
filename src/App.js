@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 // Admin Page Imports
 import AdminLayout from './components/AdminWebsite/AdminUI/AdminLayout';
 import AdminLogin from './components/AdminWebsite/AdminAuthentication/AdminLogin';
-import AdminMainPage from './components/AdminWebsite/AdminMainPage';
+import AdminMainPage from './components/AdminWebsite/AdminDashboard/AdminMainPage';
 import AdminPendingUserList from './components/AdminWebsite/AdminUserManagement/AdminPendingUserList';
 import AdminProductAdd from './components/AdminWebsite/AdminProductManagement/AdminProductAdd';
 import AdminProductList from './components/AdminWebsite/AdminProductManagement/AdminProductList';
