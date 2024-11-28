@@ -68,6 +68,7 @@ const FeaturesRoadmap = () => {
             { title: 'Orders Status Management', isDone: true, details: 'Admin can manage the status of orders placed by customers.', date: 'October 2, 2024', },
             { title: 'Admin Pending User Page', isDone: true, details: 'Admin can view and manage the approval of users who register.', date: 'October 3, 2024', },
             { title: 'Admin Categories Management Page', isDone: true, details: 'Admin can Add, Edit, Delete Categories of products.', date: 'October 27, 2024', },
+            { title: 'Admin Dashboard Charts/Tables', isDone: false, details: 'Admin can view sales data with charts and tables.', date: 'November 29, 2024', },
             { title: 'Orders Details Collapsible Rows', isDone: false, details: 'Admin can see the details of each Order by clicking on the row.', },
             { title: 'Design Editor for Customizing Site Elements', isDone: false, details: 'Admin can change parts of the design of the website. Parts that can be changed are undecided for now except for the Hero Banner.', },
             { title: 'Improve UI', isDone: false, details: 'Improve the UI design.' },
@@ -81,10 +82,10 @@ const FeaturesRoadmap = () => {
                   - **Top-Selling Products:** A list of products that generated the highest sales, helping identify popular items.
                   - **Sales Trends:** Graphs showing sales over time (daily, weekly, or monthly) to identify patterns or peak sales periods.
                   - **Refunds and Returns:** Data on any refunded or returned items, helping assess customer satisfaction.
+                  - Overall, this will show data in a reports form instead of charts and tables that is used in the dashboard.
                 `
               },
-              { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product.' },
-              { title: 'Traffic Reports', isDone: false, details: 'Using Google Analytics.' },
+              { title: 'Inventory Notification', isDone: false, details: 'This will notify the Admin on which products are low on stock. The amount of remaining stock at which the program would notify can be adjustable for each product. Will be added on the dashboard.' },
         ],
 
         // Back End Changes
@@ -102,7 +103,7 @@ const FeaturesRoadmap = () => {
         ],
     };
 
-    const lastUpdatedDate = "Last updated: October 27, 2024";
+    const lastUpdatedDate = "Last updated: November 29, 2024";
 
     return (
         <Box sx={{ p: 3, width: '70%', mx: 'auto' }}>
