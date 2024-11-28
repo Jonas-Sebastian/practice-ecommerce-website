@@ -121,7 +121,12 @@ export default function AdminDrawer({ open, onToggleDrawer, onLogout }) {
     }, [open]);
 
     return (
-        <CustomDrawer variant="permanent" open={open}>
+        <CustomDrawer variant="permanent" open={open} PaperProps={{
+            style: {
+                background: 'linear-gradient(180deg, rgb(25, 118, 210), #003366)',
+                color: '#ffffff',
+            },
+          }}>
             <List sx={{ marginTop: 8 }}>
                 {NAV_ITEMS.map((item, index) => {
                     if (item.kind === 'header') {
