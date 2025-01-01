@@ -23,10 +23,18 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
 
     // Columns for the details table
     const detailsTableColumns = [
-        { id: 'product', label: 'Product ID', width: '40%', align: 'left' },
-        { id: 'quantity', label: 'Quantity', width: '20%', align: 'center' },
-        { id: 'price', label: 'Price', width: '20%', align: 'right' },
-        { id: 'total', label: 'Total', width: '20%', align: 'right' },
+        { id: 'product', label: 'Product ID', width: '10%', align: 'left' },
+        { id: 'product_name', label: 'Product Name', width: '30%', align: 'left' },
+        { 
+            id: 'product_image', 
+            label: 'Product Image', 
+            width: '30%', 
+            align: 'left', 
+            render: (value) => <img src={value} alt="Product" style={{ maxWidth: '100px' }} />
+        },
+        { id: 'quantity', label: 'Quantity', width: '10%', align: 'center' },
+        { id: 'price', label: 'Price', width: '10%', align: 'center' },
+        { id: 'total', label: 'Total', width: '10%', align: 'center' },
     ];
 
     // Fetch status options from the backend
@@ -107,6 +115,8 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
                 columns={detailsTableColumns}
                 items={order.order_items.map(item => ({
                     product: item.product,
+                    product_name: item.product_name,
+                    product_image: item.product_image,
                     quantity: item.quantity,
                     price: item.price,
                     total: (item.price * item.quantity).toFixed(2),
