@@ -31,7 +31,7 @@ export default function CollapsibleTableDetails ({ title, columns, items }) {
                             <TableRow key={index}>
                                 {columns.map((column) => (
                                     <TableCell key={column.id} sx={{ padding: '4px' }} align={column.align}>
-                                        {item[column.id]}
+                                        {column.render ? column.render(item[column.id]) : item[column.id]}
                                     </TableCell>
                                 ))}
                             </TableRow>
