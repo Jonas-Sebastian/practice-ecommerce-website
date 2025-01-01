@@ -55,18 +55,20 @@ export default function AdminOrderTable({ orders, setOrders, onDeleteOrder, load
         return items.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
     };
 
-    const updateOrderStatus = async (orderId, newStatus) => {
+    const updateOrderStatus = async (orderId, newStatus, displayId) => {
         try {
-            setOrders(prevOrders => 
-                prevOrders.map(order => 
+            const updatedOrder = orders.find(order => order.id === orderId);
+
+            setOrders(prevOrders =>
+                prevOrders.map(order =>
                     order.id === orderId ? { ...order, status: newStatus } : order
                 )
             );
 
             await orderService.updateOrder(orderId, { status: newStatus });
-
-            // Show notification of successful update
-            setNotification({ open: true, message: `Order ${orderId} status updated to ${newStatus}` });
+    
+            const orderDisplayId = updatedOrder?.display_id;
+            setNotification({ open: true, message: `Order ${orderDisplayId} status updated to ${newStatus.toUpperCase()}` });
         } catch (error) {
             console.error('Error updating order status:', error);
 
