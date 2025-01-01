@@ -7,7 +7,7 @@ export default function CollapsibleTableDetails ({ title, columns, items }) {
             <Typography variant="subtitle1" sx={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
                 {title}
             </Typography>
-            <Paper sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 1, overflow: 'hidden', padding: 1 }}> 
+            <Paper sx={{ border: '1px solid', borderColor: 'grey.300', borderRadius: 1, overflow: 'hidden', padding: 1, marginX: 1}}> 
                 <Table>
                     <TableHead>
                         <TableRow>
