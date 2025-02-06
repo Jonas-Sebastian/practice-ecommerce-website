@@ -18,8 +18,8 @@ export default function AdminLayout() {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AdminHeader onMenuClick={handleDrawerToggle} isDrawerOpen={open} />
-            <AdminDrawer open={open} onToggleDrawer={setOpen} onLogout={handleLogout} />
+            <AdminHeader onMenuClick={handleDrawerToggle} isDrawerOpen={open} onLogout={handleLogout} />
+            <AdminDrawer open={open} onToggleDrawer={setOpen} />
             <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: 8 }}>
                 <Outlet /> {/* Renders content based on nested route */}
             </Box>
