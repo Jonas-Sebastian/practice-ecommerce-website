@@ -85,7 +85,7 @@ const NAV_ITEMS = [
     },
 ];
 
-export default function AdminDrawer({ open, onToggleDrawer, onLogout }) {
+export default function AdminDrawer({ open, onToggleDrawer}) {
     const [openReports, setOpenReports] = useState(false);
     const [openProducts, setOpenProducts] = useState(false);
     const [openUsers, setOpenUsers] = useState(false);
@@ -181,13 +181,6 @@ export default function AdminDrawer({ open, onToggleDrawer, onLogout }) {
                     );
                 })}
                 <Divider />
-                {open && (
-                    <ListItem disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton onClick={onLogout}>
-                            <ListItemText primary="Logout" />
-                        </ListItemButton>
-                    </ListItem>
-                )}
             </List>
         </CustomDrawer>
     );
