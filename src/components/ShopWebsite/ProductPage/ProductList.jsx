@@ -61,16 +61,24 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get('search')?.toLowerCase() || '';
-
+        const categoryId = new URLSearchParams(location.search).get('category');
+    
         const filtered = products.filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(query);
-            const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+            const matchesSearch = product.name.toLowerCase().includes(query) ||
+                                  product.description.toLowerCase().includes(query);
+    
+            // Ensure correct type comparison
+            const matchesCategory = categoryId ? String(product.category) === String(categoryId) : true;
+    
             const matchesPrice = product.price >= filteredMinPrice && product.price <= filteredMaxPrice;
-            return matchesSearch && matchesCategory && matchesPrice;
+            const matchesSelectedCategories = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+    
+            return matchesSearch && matchesCategory && matchesPrice && matchesSelectedCategories;
         });
-
+    
         let sortedProducts = [...filtered];
-
+    
+        // Sorting logic
         switch (sortOrder) {
             case 'product-id-asc':
                 sortedProducts.sort((a, b) => a.id - b.id);
@@ -96,7 +104,7 @@ export default function ProductList({ selectedCategories, filteredMinPrice, filt
             default:
                 break;
         }
-
+    
         setFilteredProducts(sortedProducts);
     }, [location.search, products, selectedCategories, filteredMinPrice, filteredMaxPrice, sortOrder, bestSellers]);
 
